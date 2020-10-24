@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.example.e_hrsystem.MainActivity;
 import com.example.e_hrsystem.R;
+import com.example.e_hrsystem.utils.SharedPreferencesHelper;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,6 +26,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String username = ((EditText) findViewById(R.id.etUserName)).getText().toString().trim();
                 String password = ((EditText) findViewById(R.id.etPassword)).getText().toString().trim();
+
+                if (username.isEmpty() || password.isEmpty()){
+                    Toast.makeText(LoginActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // save user in shared-preferences so when user open the app next time he will be redirected to main activity
+                SharedPreferencesHelper.saveName(LoginActivity.this, username);
 
                 // TODO handle this variables
                 // this is for testing only
