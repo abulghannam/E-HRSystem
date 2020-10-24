@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "194017885804",
+    "firebase_url": "https://ehr-system-ae2b7.firebaseio.com",
+    "project_id": "ehr-system-ae2b7",
+    "storage_bucket": "ehr-system-ae2b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194017885804:android:0b9d2dde41c5564c55a249",
+        "android_client_info": {
+          "package_name": "com.example.e_hrsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194017885804-md5p1d3emcmt7dhsuafvpe73i6ometts.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNudU0IM5cCSxO1r0DgLdzDogp1AVckmQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194017885804-md5p1d3emcmt7dhsuafvpe73i6ometts.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
