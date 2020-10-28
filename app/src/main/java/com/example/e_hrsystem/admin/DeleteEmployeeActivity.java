@@ -24,7 +24,6 @@ public class DeleteEmployeeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String username1 = ((EditText) findViewById(R.id.etDeleteUserName1)).getText().toString().trim();
-                String password1 = ((EditText) findViewById(R.id.etDeletePassword1)).getText().toString().trim();
 
                 Toast.makeText(DeleteEmployeeActivity.this,"The user has been deleted"
                         , Toast.LENGTH_SHORT).show();
