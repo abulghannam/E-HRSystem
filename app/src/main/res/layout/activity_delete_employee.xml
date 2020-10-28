@@ -45,23 +45,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.224" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etDeletePassword1"
-        android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:layout_margin="12dp"
-        android:background="@drawable/rounded_corner_for_username_pass"
-        android:fontFamily="@font/carter_one"
-        android:hint="@string/label_password"
-        android:inputType="textPassword"
-        android:gravity="center"
-        android:textColorHint="#ffffff"
-        android:translationY="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.373" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnDelete"
@@ -70,13 +53,15 @@
         android:layout_margin="12dp"
         android:background="@drawable/rounded_corner_for_button"
         android:fontFamily="@font/carter_one"
-        android:text="DELETE"
         android:gravity="center"
+        android:text="DELETE"
         android:textColor="#ffffff"
         android:translationY="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.352" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
