@@ -49,6 +49,13 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
+                if(username.toString().equals("hremployee")&&
+                        password.toString().equals("hremployee123")){
+                    Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(i);
+                }
+
                 // save user in shared-preferences so when user open the app next time he will be redirected to main activity
                 SharedPreferencesHelper.saveName(LoginActivity.this, username);
 

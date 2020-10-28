@@ -27,15 +27,17 @@
         android:id="@+id/btnAddEmployee"
         android:layout_width="150dp"
         android:layout_height="148dp"
-        android:layout_marginStart="36dp"
         android:background="@drawable/button_bg_round"
         android:fontFamily="@font/carter_one"
         android:text="Add new user"
+        android:gravity="center"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.358" />
+        app:layout_constraintVertical_bias="0.356" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnDeleteEmployee"
@@ -45,7 +47,8 @@
         android:background="@drawable/button_bg_round"
         android:fontFamily="@font/carter_one"
         android:textColor="#000000"
-        android:text="Delete a user"
+        android:gravity="center"
+        android:text="Delete user"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.451"
@@ -57,13 +60,16 @@
         android:id="@+id/btnLogout"
         android:layout_width="141dp"
         android:layout_height="38dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="24dp"
         android:background="@drawable/rounded_corner_for_button"
         android:fontFamily="@font/carter_one"
-        android:textColor="#ffffff"
         android:text="logout"
+        android:gravity="center"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.955" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

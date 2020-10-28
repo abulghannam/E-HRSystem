@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,87 +9,125 @@
     tools:context=".admin.AddEmployeeActivity">
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:background="@drawable/rounded_corner_for_username_pass"
         android:fontFamily="@font/carter_one"
         android:text="Add New Employee"
         android:textColor="#000000"
         android:textSize="26sp"
-        android:translationY="10dp" />
+        android:translationY="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.058" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etUserName"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="56dp"
         android:layout_margin="12dp"
-        android:paddingLeft="150dp"
         android:background="@drawable/rounded_corner_for_username_pass"
         android:fontFamily="@font/carter_one"
         android:hint="@string/label_username"
-        android:textColorHint="#ffffff"
         android:inputType="textPersonName"
-        android:translationY="10dp" />
+        android:gravity="center"
+        android:textColorHint="#ffffff"
+        android:translationY="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.208" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="56dp"
         android:layout_margin="12dp"
-        android:paddingLeft="160dp"
         android:background="@drawable/rounded_corner_for_username_pass"
         android:fontFamily="@font/carter_one"
         android:hint="@string/label_email"
-        android:textColorHint="#ffffff"
         android:inputType="textEmailAddress"
-        android:translationY="10dp" />
+        android:gravity="center"
+        android:textColorHint="#ffffff"
+        android:translationY="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.352" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etId"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="56dp"
         android:layout_margin="12dp"
-        android:paddingLeft="150dp"
-        android:textColorHint="#ffffff"
         android:background="@drawable/rounded_corner_for_username_pass"
         android:fontFamily="@font/carter_one"
         android:hint="@string/label_ID"
         android:inputType="number"
-        android:translationY="10dp" />
+        android:gravity="center"
+        android:textColorHint="#ffffff"
+        android:translationY="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="56dp"
         android:layout_margin="12dp"
         android:background="@drawable/rounded_corner_for_username_pass"
         android:fontFamily="@font/carter_one"
         android:hint="@string/label_password"
-        android:textColorHint="#ffffff"
-        android:paddingLeft="150dp"
         android:inputType="textPassword"
-        android:translationY="10dp" />
+        android:gravity="center"
+        android:textColorHint="#ffffff"
+        android:translationY="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.652" />
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switchIsHR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
-        android:translationY="10dp"
         android:fontFamily="@font/carter_one"
-        android:text="Register as HR" />
+        android:text="Register as HR"
+        android:translationY="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.762" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRegister"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:translationY="-7dp"
+        android:layout_width="350dp"
+        android:layout_height="56dp"
         android:layout_margin="12dp"
         android:background="@drawable/rounded_corner_for_button"
         android:fontFamily="@font/carter_one"
         android:text="Register"
-        android:textColor="#ffffff" />
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:translationY="-7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.928" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

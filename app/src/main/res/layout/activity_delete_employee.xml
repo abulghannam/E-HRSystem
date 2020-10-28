@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,17 +8,23 @@
     android:background="@drawable/gradient"
     tools:context=".admin.AddEmployeeActivity">
 
+
     <TextView
-        android:text="Delete Employee"
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:translationY="20dp"
-        android:background="@drawable/rounded_corner_for_username_pass"
-        android:layout_width="wrap_content"
-        android:textColor="#000000"
         android:fontFamily="@font/carter_one"
+        android:text="Delete Employee"
+        android:textColor="#000000"
         android:textSize="26sp"
-        android:layout_height="wrap_content"/>
+        android:translationY="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.056" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etDeleteUserName1"
@@ -27,12 +33,16 @@
         android:layout_margin="12dp"
         android:background="@drawable/rounded_corner_for_username_pass"
         android:fontFamily="@font/carter_one"
+        android:gravity="center"
         android:hint="@string/label_username"
-        android:textColorHint="#ffffff"
-        android:paddingLeft="150dp"
         android:inputType="textPersonName"
-        android:translationY="25dp" />
-
+        android:textColorHint="#ffffff"
+        android:translationY="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.224" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etDeletePassword1"
@@ -42,20 +52,30 @@
         android:background="@drawable/rounded_corner_for_username_pass"
         android:fontFamily="@font/carter_one"
         android:hint="@string/label_password"
-        android:textColorHint="#ffffff"
-        android:paddingLeft="150dp"
         android:inputType="textPassword"
-        android:translationY="25dp" />
+        android:gravity="center"
+        android:textColorHint="#ffffff"
+        android:translationY="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.373" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnDelete"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:translationY="50dp"
+        android:layout_width="350dp"
+        android:layout_height="56dp"
         android:layout_margin="12dp"
         android:background="@drawable/rounded_corner_for_button"
         android:fontFamily="@font/carter_one"
         android:text="DELETE"
-        android:textColor="#ffffff" />
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:translationY="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
