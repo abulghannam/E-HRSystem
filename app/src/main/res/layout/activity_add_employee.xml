@@ -5,54 +5,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/gradient"
     tools:context=".admin.AddEmployeeActivity">
 
     <TextView
-        android:text="Add New Employee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+        android:background="@drawable/rounded_corner_for_username_pass"
+        android:fontFamily="@font/carter_one"
+        android:text="Add New Employee"
         android:textColor="#000000"
         android:textSize="26sp"
-        android:layout_height="wrap_content"/>
+        android:translationY="10dp" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etUserName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="54dp"
         android:layout_margin="12dp"
+        android:paddingLeft="150dp"
+        android:background="@drawable/rounded_corner_for_username_pass"
+        android:fontFamily="@font/carter_one"
         android:hint="@string/label_username"
-        android:inputType="textPersonName" />
+        android:textColorHint="#ffffff"
+        android:inputType="textPersonName"
+        android:translationY="10dp" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="54dp"
         android:layout_margin="12dp"
+        android:paddingLeft="160dp"
+        android:background="@drawable/rounded_corner_for_username_pass"
+        android:fontFamily="@font/carter_one"
         android:hint="@string/label_email"
-        android:inputType="textEmailAddress" />
+        android:textColorHint="#ffffff"
+        android:inputType="textEmailAddress"
+        android:translationY="10dp" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etId"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_margin="12dp"
+        android:paddingLeft="150dp"
+        android:textColorHint="#ffffff"
+        android:background="@drawable/rounded_corner_for_username_pass"
+        android:fontFamily="@font/carter_one"
+        android:hint="@string/label_ID"
+        android:inputType="number"
+        android:translationY="10dp" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="54dp"
         android:layout_margin="12dp"
+        android:background="@drawable/rounded_corner_for_username_pass"
+        android:fontFamily="@font/carter_one"
         android:hint="@string/label_password"
-        android:inputType="textPassword" />
+        android:textColorHint="#ffffff"
+        android:paddingLeft="150dp"
+        android:inputType="textPassword"
+        android:translationY="10dp" />
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switchIsHR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
+        android:translationY="10dp"
+        android:fontFamily="@font/carter_one"
         android:text="Register as HR" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:translationY="-7dp"
         android:layout_margin="12dp"
-        android:background="@color/color_green"
+        android:background="@drawable/rounded_corner_for_button"
+        android:fontFamily="@font/carter_one"
         android:text="Register"
         android:textColor="#ffffff" />
 

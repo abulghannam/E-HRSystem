@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.e_hrsystem.admin.AddEmployeeActivity;
+import com.example.e_hrsystem.admin.DeleteEmployeeActivity;
 import com.example.e_hrsystem.utils.SharedPreferencesHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +27,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initListeners() {
+        findViewById(R.id.btnDeleteEmployee).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // when delete employee button clicked, open the desired activity
+                startActivity(new Intent(MainActivity.this, DeleteEmployeeActivity.class));
+            }
+        });
         findViewById(R.id.btnAddEmployee).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
