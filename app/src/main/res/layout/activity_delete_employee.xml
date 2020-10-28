@@ -17,6 +17,7 @@
         android:layout_margin="20dp"
         android:fontFamily="@font/carter_one"
         android:text="Delete Employee"
+        android:gravity="center"
         android:textColor="#000000"
         android:textSize="26sp"
         android:translationY="20dp"
