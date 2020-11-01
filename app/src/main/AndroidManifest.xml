@@ -23,6 +23,9 @@
         <activity android:name=".authintication.LoginActivity" />
         <activity android:name=".MainActivityAdmin" />
         <activity android:name=".MainActivity2" />
+        <activity android:name=".RequestVacationActivity" />
+        <activity android:name=".RequestLeaveActivity" />
+
     </application>
 
 </manifest>

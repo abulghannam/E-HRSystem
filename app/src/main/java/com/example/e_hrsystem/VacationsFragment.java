@@ -1,17 +1,42 @@
 package com.example.e_hrsystem;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import androidx.annotation.Nullable;
+import android.widget.Button;
 import androidx.fragment.app.Fragment;
 
 public class VacationsFragment extends Fragment {
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_vacations, null);
+    View view;
+    Button firstButton,secondButton;
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+// Inflate the layout for this fragment
+        view = inflater.inflate(R.layout.fragment_vacations, container, false);
+// get the reference of Button
+        firstButton = (Button) view.findViewById(R.id.btnRequestVacation);
+// perform setOnClickListener on first Button
+        firstButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+// display a message by using a Toast
+                startActivity(new Intent(getActivity(),RequestVacationActivity.class));
+            }
+        });
+        secondButton = (Button) view.findViewById(R.id.btnRequestLeave);
+        secondButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view1) {
+// display a message by using a Toast
+                startActivity(new Intent(getActivity(),RequestLeaveActivity.class));
+            }
+        });
+
+        return view;
     }
 }
