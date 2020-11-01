@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.example.e_hrsystem.authintication.LoginActivity
+import com.example.e_hrsystem.authentication.LoginActivity
 import com.example.e_hrsystem.utils.SharedPreferencesHelper
 
 class SplashActivity : AppCompatActivity() {

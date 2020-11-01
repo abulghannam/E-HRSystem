@@ -1,4 +1,4 @@
-package com.example.e_hrsystem.authintication;
+package com.example.e_hrsystem.authentication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.e_hrsystem.MainActivity2;
 import com.example.e_hrsystem.MainActivityAdmin;
 import com.example.e_hrsystem.R;
@@ -35,13 +34,19 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                    if(username.toString().equals("employee")&&
+                            password.toString().equals("employee123")){
+                        Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(LoginActivity.this, MainActivity2.class);
+                        startActivity(i);
+                        finish();
+                    }
                 if(username.toString().equals("admin")&&
                         password.toString().equals("admin123")){
                     Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(), MainActivityAdmin.class);
                     startActivity(i);
-
+                    finish();
                 }
 
                 //Password Validation
@@ -50,24 +55,12 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-
-
                 // save user in shared-preferences so when user open the app next time he will be redirected to main activity
                 SharedPreferencesHelper.saveName(LoginActivity.this, username);
 
                 // TODO handle this variables
                 // this is for testing only
                 Toast.makeText(LoginActivity.this,  "Welcome Back"+ " " + username, Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this, MainActivityAdmin.class));
-                finish();
-
-                if(username.toString().equals("employee")&&
-                        password.toString().equals("employee123")){
-                    Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(LoginActivity.this, MainActivity2.class);
-                    startActivity(i);
-                    finish();
-                }
             }
         });
 
