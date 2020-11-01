@@ -1,11 +1,9 @@
 package com.example.e_hrsystem
 
-import android.app.backup.SharedPreferencesBackupHelper
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.widget.Toast
 import com.example.e_hrsystem.authintication.LoginActivity
 import com.example.e_hrsystem.utils.SharedPreferencesHelper
 
@@ -17,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({
             // if user is logged in then open the main activity, else open login activity
             if (SharedPreferencesHelper.isUserLoggedIn(this)) {
-                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                startActivity(Intent(this@SplashActivity, MainActivityAdmin::class.java))
             } else {
                 startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
             }

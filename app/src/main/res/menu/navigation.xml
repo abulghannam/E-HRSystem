@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_profile_black_24"
+        android:fontFamily="@font/carter_one"
+        android:title="@string/title_profile" />
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24"
+        android:fontFamily="@font/carter_one"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_vacations"
+        android:icon="@drawable/ic_vacations_black_24"
+        android:fontFamily="@font/carter_one"
+        android:title="@string/title_vacations" />
+
+    <item
+        android:id="@+id/navigation_offers"
+        android:icon="@drawable/ic_offers_black_24"
+        android:fontFamily="@font/carter_one"
+        android:title="@string/title_offers" />
+
+    <item
+        android:id="@+id/navigation_attendance"
+        android:icon="@drawable/ic_attendance_black_24"
+        android:fontFamily="@font/carter_one"
+        android:title="@string/title_attendance" />
+
+</menu>

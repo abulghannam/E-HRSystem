@@ -4,14 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.e_hrsystem.MainActivity;
+
+import com.example.e_hrsystem.MainActivity2;
+import com.example.e_hrsystem.MainActivityAdmin;
 import com.example.e_hrsystem.R;
 import com.example.e_hrsystem.utils.SharedPreferencesHelper;
-import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initViews() {
         findViewById(R.id.btnLogin).setOnClickListener(new View.OnClickListener() {
-            @Override
+                @Override
             public void onClick(View view) {
                 String username = ((EditText) findViewById(R.id.etUserName)).getText().toString().trim();
                 String password = ((EditText) findViewById(R.id.etPassword)).getText().toString().trim();
@@ -39,8 +39,9 @@ public class LoginActivity extends AppCompatActivity {
                 if(username.toString().equals("admin")&&
                         password.toString().equals("admin123")){
                     Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                    Intent i = new Intent(getApplicationContext(), MainActivityAdmin.class);
                     startActivity(i);
+
                 }
 
                 //Password Validation
@@ -49,12 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                if(username.toString().equals("hremployee")&&
-                        password.toString().equals("hremployee123")){
-                    Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(i);
-                }
+
 
                 // save user in shared-preferences so when user open the app next time he will be redirected to main activity
                 SharedPreferencesHelper.saveName(LoginActivity.this, username);
@@ -62,9 +58,19 @@ public class LoginActivity extends AppCompatActivity {
                 // TODO handle this variables
                 // this is for testing only
                 Toast.makeText(LoginActivity.this,  "Welcome Back"+ " " + username, Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                startActivity(new Intent(LoginActivity.this, MainActivityAdmin.class));
                 finish();
+
+                if(username.toString().equals("employee")&&
+                        password.toString().equals("employee123")){
+                    Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(LoginActivity.this, MainActivity2.class);
+                    startActivity(i);
+                    finish();
+                }
             }
         });
+
+
     }
 }
