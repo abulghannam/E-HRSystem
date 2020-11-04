@@ -3,12 +3,15 @@
     <color name="colorPrimary">#D0DADA</color>
     <color name="colorPrimaryDark">#989898</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="colorBack">#9F275B</color>
+
     <color name="color_blue">#123B5A</color>
     <color name="color_gray">#7E8287</color>
     <color name="color_green">#659E68</color>
 
     <color name="colorNavIcon">#FFFFFF</color>
-    <color name="colorNavText">#01294b</color>
+    <color name="colorNavText">#2A74CD</color>
     <color name="colorNavBackground">#E19B7B</color>
 
 

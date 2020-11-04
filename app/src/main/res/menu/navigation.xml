@@ -31,4 +31,16 @@
         android:fontFamily="@font/carter_one"
         android:title="@string/title_attendance" />
 
+
+
+    <item android:title="logout">
+            <menu>
+                <item
+        android:id="@+id/navigation_logout"
+        android:icon="@drawable/ic_logout_black_24"
+        android:fontFamily="@font/carter_one"
+        android:title="Logout" />
+            </menu>
+    </item>
+
 </menu>
