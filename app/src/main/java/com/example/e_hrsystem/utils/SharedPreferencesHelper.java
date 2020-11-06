@@ -4,26 +4,36 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.e_hrsystem.model.User;
+import com.google.gson.Gson;
+
 public class SharedPreferencesHelper {
 
-    private static String KEY_NAME = "name";
+    private static String KEY_USER_OBJECT = "KEY_USER_OBJECT";
+
 
     private static SharedPreferences getSharedPreference(Context context) {
         return context.getSharedPreferences("my_data", Context.MODE_PRIVATE);
     }
 
     @SuppressLint("ApplySharedPref")
-    public static void saveName(Context context, String name) {
-        // This code is for testing only
-        SharedPreferences sharedPreferences = getSharedPreference(context);
-        sharedPreferences.edit()
-                .putString(KEY_NAME, name)
-                .commit();
+    public static void saveUser(Context context, User user) {
+        // Saving the user in the SP
+        String userJson = new Gson().toJson(user);
+        getSharedPreference(context).edit().putString(KEY_USER_OBJECT, userJson).commit();
+    }
+
+    public static User getUser(Context context) {
+        // Retrieve the user from the sp
+        String userJson = getSharedPreference(context).getString(KEY_USER_OBJECT, "");
+        if (userJson != null && !userJson.isEmpty()) {
+            return new Gson().fromJson(userJson, User.class);
+        }
+        return null;
     }
 
     public static String getSavedName(Context context) {
-        SharedPreferences sharedPreferences = getSharedPreference(context);
-        return sharedPreferences.getString(KEY_NAME, "");
+        return getUser(context).getUsername();
     }
 
     @SuppressLint("ApplySharedPref")
@@ -32,7 +42,7 @@ public class SharedPreferencesHelper {
     }
 
     public static boolean isUserLoggedIn(Context context) {
-        return !getSavedName(context).isEmpty();
+        return getUser(context) != null;
     }
 
 

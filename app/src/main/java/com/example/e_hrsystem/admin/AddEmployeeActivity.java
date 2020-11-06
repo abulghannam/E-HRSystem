@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.e_hrsystem.R;
+import com.example.e_hrsystem.model.User;
 
 public class AddEmployeeActivity extends AppCompatActivity {
 
@@ -36,7 +37,13 @@ public class AddEmployeeActivity extends AppCompatActivity {
                         , Toast.LENGTH_SHORT).show();
 
                 // TODO: handle the registration process
+                registerUser(new User(username, email, switchIsHr.isChecked(), null));
             }
         });
+    }
+
+    private void registerUser(User user){
+        // TODO register user in our online database
+        // for example save it in the firebase database
     }
 }

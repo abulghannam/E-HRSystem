@@ -25,6 +25,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.348" />
 
+    <TextView
+        android:id="@+id/tvDetails"
+        app:layout_constraintTop_toTopOf="@id/tvMyInfo"
+        app:layout_constraintStart_toEndOf="@id/tvMyInfo"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/tvMyInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ImageViewProfile2"
         android:layout_width="120dp"

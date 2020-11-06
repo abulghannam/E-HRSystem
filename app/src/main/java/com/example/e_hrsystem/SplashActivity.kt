@@ -15,7 +15,12 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({
             // if user is logged in then open the main activity, else open login activity
             if (SharedPreferencesHelper.isUserLoggedIn(this)) {
-                startActivity(Intent(this@SplashActivity, MainActivityAdmin::class.java))
+                val isAdmin = false
+                if(isAdmin){
+                    startActivity(Intent(this@SplashActivity, MainActivityAdmin::class.java))
+                }else{
+                    startActivity(Intent(this@SplashActivity, MainActivity2::class.java))
+                }
             } else {
                 startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
             }
