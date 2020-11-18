@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.e_hrsystem.admin.AddEmployeeActivity;
 import com.example.e_hrsystem.admin.DeleteEmployeeActivity;
 import com.example.e_hrsystem.utils.SharedPreferencesHelper;
+import com.example.e_hrsystem.utils.SplashActivity;
 
 public class MainActivityAdmin extends AppCompatActivity {
 
@@ -21,8 +22,8 @@ public class MainActivityAdmin extends AppCompatActivity {
         initListeners();
 
         // get the saved name and display it
-        String name = SharedPreferencesHelper.getSavedName(this);
-        ((TextView)findViewById(R.id.textView)).setText(name);
+//        String name = SharedPreferencesHelper.getSavedName(this);
+//        ((TextView)findViewById(R.id.textView)).setText(name);
     }
 
     private void initListeners() {

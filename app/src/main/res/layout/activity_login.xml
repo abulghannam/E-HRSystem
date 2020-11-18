@@ -4,44 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/gradient"
+    android:orientation="vertical"
     tools:context=".authentication.LoginActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/round_background"
-        android:src="@drawable/ic_baseline_person_24"
+    <ProgressBar
+        android:id="@+id/progressbarlogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.172"
-        app:layout_constraintWidth_percent="0.5" />
+        app:layout_constraintVertical_bias="0.803" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etUserName"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_margin="12dp"
-        android:background="@drawable/rounded_corner_for_username_pass"
+    <TextView
+        android:id="@+id/tvsignintocontinue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/carter_one"
-        android:gravity="center"
-        android:hint="@string/label_username"
-        android:inputType="textPersonName"
-        android:textColorHint="#ffffff"
+        android:text="Sign In to continue"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.516" />
+        app:layout_constraintVertical_bias="0.398" />
+
+    <TextView
+        android:id="@+id/tvForgot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/carter_one"
+        android:gravity="center"
+        android:text="Forgot your password?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.79" />
+
+
+    <TextView
+        android:id="@+id/tvhellothere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bungee"
+        android:text="Hello there, Welcome Back!"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.336" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogin"
+        android:layout_width="350dp"
+        android:layout_height="56dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/rounded_corner_for_button"
+        android:fontFamily="@font/carter_one"
+        android:text="@string/label_login"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.954" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etPasswordLogin"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_margin="12dp"
@@ -58,33 +95,37 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.695" />
 
-    <TextView
-        android:id="@+id/tvForgot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etUsernameLogin"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/rounded_corner_for_username_pass"
         android:fontFamily="@font/carter_one"
         android:gravity="center"
-        android:text="Forgot your password?"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:textColorHint="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79" />
+        app:layout_constraintVertical_bias="0.516" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLogin"
-        android:layout_width="350dp"
-        android:layout_height="56dp"
-        android:layout_margin="16dp"
-        android:background="@drawable/rounded_corner_for_button"
-        android:fontFamily="@font/carter_one"
-        android:text="@string/label_login"
-        android:textColor="#ffffff"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/hrlogo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/round_background"
+        android:src="@drawable/hricon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.954" />
+        app:layout_constraintVertical_bias="0.035"
+        app:layout_constraintWidth_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

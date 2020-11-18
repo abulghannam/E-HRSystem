@@ -1,9 +1,10 @@
-package com.example.e_hrsystem;
+package com.example.e_hrsystem.employeeFragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.e_hrsystem.R;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 

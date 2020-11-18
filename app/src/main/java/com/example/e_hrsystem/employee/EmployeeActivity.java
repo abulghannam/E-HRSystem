@@ -1,4 +1,4 @@
-package com.example.e_hrsystem;
+package com.example.e_hrsystem.employee;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,14 @@ import android.view.View;
 import android.widget.Toast;
 
 
-import com.example.e_hrsystem.authentication.LoginActivity;
+import com.example.e_hrsystem.R;
+import com.example.e_hrsystem.employeeFragments.AttendanceFragment;
+import com.example.e_hrsystem.employeeFragments.HomeFragment;
+import com.example.e_hrsystem.employeeFragments.OffersFragment;
+import com.example.e_hrsystem.employeeFragments.ProfileFragment;
+import com.example.e_hrsystem.employeeFragments.VacationsFragment;
 import com.example.e_hrsystem.utils.SharedPreferencesHelper;
+import com.example.e_hrsystem.utils.SplashActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -22,7 +28,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-public class MainActivity2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class EmployeeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
@@ -34,7 +40,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_employee);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -61,7 +67,10 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
 
         switch (item.getItemId()) {
             case R.id.navigation_profile:
-                fragment = new ProfileFragment();
+
+                    fragment = new ProfileFragment();
+
+
                 break;
 
             case R.id.navigation_home:
@@ -85,12 +94,13 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
                     @Override
                     public void onClick(View view) {
                         // clear the saved name that is saved in the SP, and redirect the user to the splash screen
-                        SharedPreferencesHelper.logout(MainActivity2.this);
-                        startActivity(new Intent(MainActivity2.this, SplashActivity.class));
+                        SharedPreferencesHelper.logout(EmployeeActivity.this);
+                        startActivity(new Intent(EmployeeActivity.this, SplashActivity.class));
                         finish();
                     }
                 });
-            break;
+
+                break;
         }
 
         return loadFragment(fragment);

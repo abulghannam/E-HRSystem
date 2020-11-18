@@ -1,6 +1,8 @@
-package com.example.e_hrsystem;
+package com.example.e_hrsystem.employee;
 
 import android.os.Bundle;
+
+import com.example.e_hrsystem.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
