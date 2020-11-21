@@ -9,8 +9,10 @@ import android.widget.TextView;
 
 import com.example.e_hrsystem.admin.AddEmployeeActivity;
 import com.example.e_hrsystem.admin.DeleteEmployeeActivity;
+import com.example.e_hrsystem.authentication.LoginActivity;
 import com.example.e_hrsystem.utils.SharedPreferencesHelper;
 import com.example.e_hrsystem.utils.SplashActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivityAdmin extends AppCompatActivity {
 
@@ -46,7 +48,8 @@ public class MainActivityAdmin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // clear the saved name that is saved in the SP, and redirect the user to the splash screen
-                SharedPreferencesHelper.logout(MainActivityAdmin.this);
+                //SharedPreferencesHelper.logout(MainActivityAdmin.this);
+                FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(MainActivityAdmin.this, SplashActivity.class));
                 finish();
             }

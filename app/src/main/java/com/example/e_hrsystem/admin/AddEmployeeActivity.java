@@ -105,7 +105,8 @@ public class AddEmployeeActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful()){
-                                                Toast.makeText(AddEmployeeActivity.this,"Registration is completed", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(AddEmployeeActivity.this,"Registration is completed"
+                                                        , Toast.LENGTH_SHORT).show();
                                             }
                                             else
                                             {

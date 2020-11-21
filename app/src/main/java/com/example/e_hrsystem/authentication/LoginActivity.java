@@ -6,6 +6,7 @@ import androidx.appcompat.widget.SwitchCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 
@@ -35,8 +42,10 @@ public class LoginActivity extends AppCompatActivity {
     EditText etEmail,etPassword;
     FirebaseAuth auth;
     Button btnLogin;
+    DatabaseReference dbRef;
+    boolean isAdmin;
 
-
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPasswordLogin);
         btnLogin = findViewById(R.id.btnLogin);
         auth = FirebaseAuth.getInstance();
-
-
-
+        user = new User();
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,14 +68,29 @@ public class LoginActivity extends AppCompatActivity {
         String strEmail = etEmail.getText().toString();
         String strPassword = etPassword.getText().toString();
 
-
         if (!TextUtils.isEmpty(strEmail) && !TextUtils.isEmpty(strPassword)){
             auth.signInWithEmailAndPassword(strEmail,strPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(LoginActivity.this, MainActivityAdmin.class));
-                            finish();
+
+                            dbRef = FirebaseDatabase.getInstance().getReference().child("users").child(auth.getCurrentUser().getUid());
+                            getAdmin();
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (isAdmin){
+                                        startActivity(new Intent(LoginActivity.this, MainActivityAdmin.class));
+                                        finish();
+
+                                    }else{
+                                        startActivity(new Intent(LoginActivity.this, EmployeeActivity.class));
+                                        finish();
+
+                                    }
+
+                                }
+                            },1000);
                         }
                     
                 }
@@ -82,6 +104,23 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "all field is ...", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void getAdmin(){
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                user = snapshot.getValue(User.class);
+
+                isAdmin = user.isAdmin();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 
 //    private void initViews() {
 //        findViewById(R.id.btnLogin).setOnClickListener(new View.OnClickListener() {

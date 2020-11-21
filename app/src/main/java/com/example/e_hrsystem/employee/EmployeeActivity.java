@@ -17,6 +17,7 @@ import com.example.e_hrsystem.employeeFragments.VacationsFragment;
 import com.example.e_hrsystem.utils.SharedPreferencesHelper;
 import com.example.e_hrsystem.utils.SplashActivity;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -35,7 +36,7 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
     NavigationView navigationView;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
-
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        auth = FirebaseAuth.getInstance();
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(this);
@@ -94,7 +95,7 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
                     @Override
                     public void onClick(View view) {
                         // clear the saved name that is saved in the SP, and redirect the user to the splash screen
-                        SharedPreferencesHelper.logout(EmployeeActivity.this);
+                        auth.signOut();
                         startActivity(new Intent(EmployeeActivity.this, SplashActivity.class));
                         finish();
                     }

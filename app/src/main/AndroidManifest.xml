@@ -9,17 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".admin.DeleteEmployeeActivity" />
-        <activity android:name=".admin.AddEmployeeActivity" />
-
-        <activity android:name=".utils.SplashActivity">
+        <activity android:name=".utils.SplashActivityJava">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+        </activity>
+        <activity android:name=".admin.DeleteEmployeeActivity" />
+        <activity android:name=".admin.AddEmployeeActivity" />
+        <activity android:name=".utils.SplashActivity">
         </activity>
         <activity android:name=".authentication.LoginActivity" />
         <activity android:name=".MainActivityAdmin" />
@@ -28,7 +28,6 @@
         <activity
             android:name=".employee.EmployeeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
     </application>
 
 </manifest>
