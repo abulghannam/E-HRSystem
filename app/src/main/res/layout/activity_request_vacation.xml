@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient">
 
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:layout_width="145dp"
@@ -27,7 +35,7 @@
         app:layout_constraintVertical_bias="0.027" />
 
     <Spinner
-        android:id="@+id/spinner1"
+        android:id="@+id/spinnerType"
         android:layout_width="193dp"
         android:layout_height="28dp"
         android:background="@drawable/rounded_corner_for_date"
@@ -132,7 +140,7 @@
         app:layout_constraintVertical_bias="0.6" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etMoreInfo"
+        android:id="@+id/etMoreInfoVac"
         android:layout_width="236dp"
         android:layout_height="93dp"
         android:layout_margin="12dp"
@@ -150,7 +158,7 @@
         app:layout_constraintVertical_bias="0.8" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSendRequest"
+        android:id="@+id/btnSendRequestVac"
         android:layout_width="192dp"
         android:layout_height="47dp"
         android:layout_margin="16dp"

@@ -1,10 +1,13 @@
 package com.example.e_hrsystem.employee;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.ContactsContract;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -14,10 +17,17 @@ import com.example.e_hrsystem.employeeFragments.HomeFragment;
 import com.example.e_hrsystem.employeeFragments.OffersFragment;
 import com.example.e_hrsystem.employeeFragments.ProfileFragment;
 import com.example.e_hrsystem.employeeFragments.VacationsFragment;
+import com.example.e_hrsystem.model.User;
 import com.example.e_hrsystem.utils.SharedPreferencesHelper;
 import com.example.e_hrsystem.utils.SplashActivity;
+import com.example.e_hrsystem.utils.SplashActivityJava;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -68,10 +78,7 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
 
         switch (item.getItemId()) {
             case R.id.navigation_profile:
-
                     fragment = new ProfileFragment();
-
-
                 break;
 
             case R.id.navigation_home:
@@ -91,16 +98,9 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
                 break;
 
             case R.id.navigation_logout:
-                findViewById(R.id.navigation_logout).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        // clear the saved name that is saved in the SP, and redirect the user to the splash screen
                         auth.signOut();
-                        startActivity(new Intent(EmployeeActivity.this, SplashActivity.class));
+                        startActivity(new Intent(EmployeeActivity.this, SplashActivityJava.class));
                         finish();
-                    }
-                });
-
                 break;
         }
 

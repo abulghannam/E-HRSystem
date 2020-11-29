@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.e_hrsystem."
-    android:background="@drawable/gradient">
+    android:background="@drawable/gradient"
+    tools:context="com.example.e_hrsystem.">
 
 
     <DigitalClock
@@ -38,22 +37,21 @@
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintHorizontal_bias="0.252"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.249" />
+        app:layout_constraintVertical_bias="0.21" />
 
-    <TimePicker
-        android:id="@+id/datePicker1"
-        android:layout_width="239dp"
-        android:layout_height="145dp"
-        android:timePickerMode="spinner"
+    <TextView
+        android:id="@+id/pickedTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.453"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.438" />
+        app:layout_constraintVertical_bias="0.558" />
 
     <TextView
         android:layout_width="198dp"
@@ -73,8 +71,44 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.626" />
 
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="239dp"
+        android:layout_height="145dp"
+        android:timePickerMode="spinner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.366" />
+
+    <TextView
+        android:id="@+id/tv_lev_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSendRequestLev"
+        android:layout_width="192dp"
+        android:layout_height="47dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/rounded_corner_for_button"
+        android:fontFamily="@font/carter_one"
+        android:text="Send Request"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etMoreInfo"
+        android:id="@+id/etMoreInfoLev"
         android:layout_width="220dp"
         android:layout_height="104dp"
         android:layout_margin="12dp"
@@ -90,22 +124,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.833" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSendRequest"
-        android:layout_width="192dp"
-        android:layout_height="47dp"
-        android:layout_margin="16dp"
-        android:background="@drawable/rounded_corner_for_button"
-        android:fontFamily="@font/carter_one"
-        android:text="Send Request"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

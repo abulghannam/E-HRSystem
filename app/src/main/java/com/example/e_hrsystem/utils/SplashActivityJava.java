@@ -69,7 +69,7 @@ public class SplashActivityJava extends AppCompatActivity {
                             }
 
                         }
-                    },1000);
+                    },1500);
                 }else{
 
                     startActivity(new Intent(SplashActivityJava.this, LoginActivity.class));
@@ -86,8 +86,9 @@ public class SplashActivityJava extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 user = snapshot.getValue(User.class);
-
+                assert user != null;
                 isAdmin = user.isAdmin();
+
             }
 
             @Override

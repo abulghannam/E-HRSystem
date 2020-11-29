@@ -27,24 +27,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.056" />
 
+
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etDeleteUserName1"
+        android:id="@+id/etDeleteEmail"
         android:layout_width="match_parent"
         android:layout_height="51dp"
         android:layout_margin="12dp"
         android:background="@drawable/rounded_corner_for_username_pass"
         android:fontFamily="@font/carter_one"
         android:gravity="center"
-        android:hint="@string/label_username"
+        android:hint="Email Address"
         android:inputType="textPersonName"
         android:textColorHint="#ffffff"
-        android:translationY="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224" />
-
+        app:layout_constraintVertical_bias="0.28" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnDelete"

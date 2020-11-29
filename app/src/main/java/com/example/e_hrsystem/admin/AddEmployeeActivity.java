@@ -9,6 +9,8 @@ import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 import com.example.e_hrsystem.R;
 import com.example.e_hrsystem.model.User;
@@ -22,8 +24,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class AddEmployeeActivity extends AppCompatActivity {
 
     private EditText rUsername, rEmail , rWorkingId , rPassword;
-    private FirebaseAuth fAuth;
-
+    private RadioGroup radioGroup;
+    private RadioButton male,female,radioButton;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +37,12 @@ public class AddEmployeeActivity extends AppCompatActivity {
         rEmail = findViewById(R.id.etEmailReg);
         rWorkingId = findViewById(R.id.etWorkingIdReg);
         rPassword = findViewById(R.id.etPasswordReg);
+        radioGroup = findViewById(R.id.rbGroup);
+        male = findViewById(R.id.rbMale);
+        female = findViewById(R.id.rbFeMale);
 
-        fAuth = FirebaseAuth.getInstance();
+
+        auth = FirebaseAuth.getInstance();
 
         initListeners();
     }
@@ -49,9 +56,22 @@ public class AddEmployeeActivity extends AppCompatActivity {
                 final String workingID = rWorkingId.getText().toString().trim();
                 final String password = rPassword.getText().toString().trim();
                 final SwitchCompat switchIsHr = findViewById(R.id.switchIsHR);
+                final String gender;
+
+                int radioId = radioGroup.getCheckedRadioButtonId();
+
+                radioButton = findViewById(radioId);
+
+                if (radioButton.getText().equals("Male")) {
+                    gender = "male";
+                }else{
+                    gender = "female";
+
+                }
 
 
-                //validation of registration form
+
+                    //validation of registration form
                 if (TextUtils.isEmpty(username)) {
                     rUsername.setError("Username is Required!");
                     rUsername.requestFocus();
@@ -90,15 +110,21 @@ public class AddEmployeeActivity extends AppCompatActivity {
                     rPassword.setError("Password must be >= 6 characters");
                     return;
                 }
+                final boolean isAdmin;
+                if (switchIsHr.isChecked()){
 
+                    isAdmin = true;
+                }else {
+                    isAdmin = false;
+                }
                 //saving a user and validate
-                fAuth.createUserWithEmailAndPassword(email,password)
+                auth.createUserWithEmailAndPassword(email,password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful())
                                 {
-                                    User user = new User(username,email,workingID,password,switchIsHr.isChecked(),null);
+                                    User user = new User(username,email,workingID,password,isAdmin,gender,null);
                                     FirebaseDatabase.getInstance().getReference("users")
                                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {

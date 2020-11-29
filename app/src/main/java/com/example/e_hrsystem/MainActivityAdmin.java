@@ -16,11 +16,14 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivityAdmin extends AppCompatActivity {
 
+    FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_admin);
         // init the listeners
+        auth = FirebaseAuth.getInstance();
         initListeners();
 
         // get the saved name and display it
@@ -49,7 +52,7 @@ public class MainActivityAdmin extends AppCompatActivity {
             public void onClick(View view) {
                 // clear the saved name that is saved in the SP, and redirect the user to the splash screen
                 //SharedPreferencesHelper.logout(MainActivityAdmin.this);
-                FirebaseAuth.getInstance().signOut();
+                auth.signOut();
                 startActivity(new Intent(MainActivityAdmin.this, SplashActivity.class));
                 finish();
             }

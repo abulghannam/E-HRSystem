@@ -8,6 +8,7 @@ class User constructor(
         var workingID: String? = null,
         var password: String? = null,
         var isAdmin: Boolean = false,
+        var gender:String?="",
         var history: ArrayList<TimeLog>? = null
 
 )

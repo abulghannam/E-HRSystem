@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,14 +45,14 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     DatabaseReference dbRef;
     boolean isAdmin;
-
     User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        etEmail = findViewById(R.id.etUsernameLogin);
+        etEmail = findViewById(R.id.etEmailLogin);
         etPassword = findViewById(R.id.etPasswordLogin);
         btnLogin = findViewById(R.id.btnLogin);
         auth = FirebaseAuth.getInstance();
@@ -65,8 +66,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void startLogin(){
-        String strEmail = etEmail.getText().toString();
-        String strPassword = etPassword.getText().toString();
+        final String strEmail = etEmail.getText().toString();
+        final String strPassword = etPassword.getText().toString();
 
         if (!TextUtils.isEmpty(strEmail) && !TextUtils.isEmpty(strPassword)){
             auth.signInWithEmailAndPassword(strEmail,strPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -90,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                                     }
 
                                 }
-                            },1000);
+                            },1500);
                         }
                     
                 }
@@ -101,7 +102,26 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         }else {
-            Toast.makeText(this, "all field is ...", Toast.LENGTH_SHORT).show();
+            if (TextUtils.isEmpty(strPassword)) {
+                etPassword.setError("Password is Required!");
+                etPassword.requestFocus();
+                return;
+            }
+
+            if (TextUtils.isEmpty(strEmail)) {
+                etEmail.setError("Email is Required!");
+                etEmail.requestFocus();
+                return;
+            }
+
+
+            if (!Patterns.EMAIL_ADDRESS.matcher(strEmail).matches())
+            {
+                etEmail.setError("Please provide a valid email!");
+                etEmail.requestFocus();
+            }
+
+
         }
     }
 

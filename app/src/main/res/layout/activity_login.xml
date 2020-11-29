@@ -97,14 +97,14 @@
 
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etUsernameLogin"
+        android:id="@+id/etEmailLogin"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_margin="12dp"
         android:background="@drawable/rounded_corner_for_username_pass"
         android:fontFamily="@font/carter_one"
         android:gravity="center"
-        android:hint="Username"
+        android:hint="Email Address"
         android:inputType="textPersonName"
         android:textColorHint="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
