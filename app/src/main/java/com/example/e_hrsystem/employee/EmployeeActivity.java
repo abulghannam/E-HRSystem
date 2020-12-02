@@ -48,6 +48,11 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
     FragmentTransaction fragmentTransaction;
     FirebaseAuth auth;
 
+    TextView name,email;
+
+    User user;
+
+    DatabaseReference dbRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +60,17 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        user = new User();
         auth = FirebaseAuth.getInstance();
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
+
+        View headerView = navigationView.getHeaderView(0);
+
+        name = headerView.findViewById(R.id.tvemployeeName);
+        email = headerView.findViewById(R.id.tvemployeeEmail);
+
+        dbRef = FirebaseDatabase.getInstance().getReference().child("users").child(auth.getCurrentUser().getUid());
         navigationView.setNavigationItemSelectedListener(this);
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
@@ -69,6 +82,25 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.container_fragment,new ProfileFragment());
         fragmentTransaction.commit();
+
+        getUSerData();
+    }
+
+    private void getUSerData(){
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                user = snapshot.getValue(User.class);
+
+                name.setText(user.getUsername());
+                email.setText(user.getEmail());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override
