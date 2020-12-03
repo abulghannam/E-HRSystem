@@ -118,13 +118,13 @@ public class ProfileFragment extends Fragment {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()){
-                                Toast.makeText(getContext(), "You have already checked in today!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "You have already checked In today!", Toast.LENGTH_SHORT).show();
                             }else{
 
-                                TimeLog checkin = new TimeLog(currentDate,currentTime);
+                                TimeLog checkIn = new TimeLog(currentDate,currentTime);
                                 DatabaseReference dbRefCurrentUserId = databaseReferenceIn.child(currentDate);
-                                dbRefCurrentUserId.setValue(checkin);
-                                Toast.makeText(getContext(), "You checked in!", Toast.LENGTH_SHORT).show();
+                                dbRefCurrentUserId.setValue(checkIn);
+                                Toast.makeText(getContext(), "You have checked In at : " + currentTime, Toast.LENGTH_SHORT).show();
 
                             }
                         }
@@ -156,15 +156,37 @@ public class ProfileFragment extends Fragment {
         databaseReferenceOut.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot.hasChild(id)){
-                    Toast.makeText(getContext(), "You have already checked out!", Toast.LENGTH_SHORT).show();
+                if(snapshot.hasChild(id)){
+                    Toast.makeText(getContext(), "You have already checked Out today!", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    DatabaseReference dbRefCurrentUserId = databaseReferenceOut.child(id);
-                    TimeLog checkout = new TimeLog(currentDate,currentTime);
-                    dbRefCurrentUserId.setValue(checkout);
-                    Toast.makeText(getContext(), "You checked out!", Toast.LENGTH_SHORT).show();
+                    Query query = FirebaseDatabase.getInstance().getReference("users").child(auth.getCurrentUser().getUid())
+                            .child("checkOut").orderByChild("date").equalTo(currentDate);
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()){
+                                Toast.makeText(getContext(), "You have already checked Out today!", Toast.LENGTH_SHORT).show();
+                            }else{
+
+                                TimeLog checkOut = new TimeLog(currentDate,currentTime);
+                                DatabaseReference dbRefCurrentUserId = databaseReferenceOut.child(currentDate);
+                                dbRefCurrentUserId.setValue(checkOut);
+                                Toast.makeText(getContext(), "You have checked Out at : " + currentTime, Toast.LENGTH_SHORT).show();
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+//                            TimeLog checkin = new TimeLog(currentDate,currentTime,null);
+//                    DatabaseReference dbRefCurrentUserId = databaseReferenceIn.child(currentDate);
+//                    dbRefCurrentUserId.setValue(checkin);
+//                    Toast.makeText(getContext(), "You checked in!", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -173,6 +195,7 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+
     }
 
     private void getData(){
@@ -181,9 +204,9 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 user = snapshot.getValue(User.class);
 
-                tvName.setText(user.getUsername());
-                tvEmail.setText(user.getEmail());
-                tvWorkingId.setText(user.getWorkingID());
+                tvName.setText("Employee's Username : " + user.getUsername());
+                tvEmail.setText("Employee's Email : " +user.getEmail());
+                tvWorkingId.setText("Employee's Working ID : " +user.getWorkingID());
             }
 
             @Override
