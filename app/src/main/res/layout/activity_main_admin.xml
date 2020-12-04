@@ -56,6 +56,38 @@
         app:layout_constraintVertical_bias="0.362" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnReviewVacationRequestsData"
+        android:layout_width="142dp"
+        android:layout_height="67dp"
+        android:background="@drawable/rounded_corner_for_button"
+        android:fontFamily="@font/carter_one"
+        android:gravity="center"
+        android:text="Review Vacation Requests"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.189"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.729" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnReviewLeaveRequestsData"
+        android:layout_width="142dp"
+        android:layout_height="67dp"
+        android:background="@drawable/rounded_corner_for_button"
+        android:fontFamily="@font/carter_one"
+        android:gravity="center"
+        android:text="Review Leave Requests"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.847"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.727" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogout"
         android:layout_width="141dp"
         android:layout_height="38dp"

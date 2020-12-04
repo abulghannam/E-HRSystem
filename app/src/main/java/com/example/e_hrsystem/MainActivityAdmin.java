@@ -12,6 +12,7 @@ import com.example.e_hrsystem.admin.DeleteEmployeeActivity;
 import com.example.e_hrsystem.authentication.LoginActivity;
 import com.example.e_hrsystem.utils.SharedPreferencesHelper;
 import com.example.e_hrsystem.utils.SplashActivity;
+import com.example.e_hrsystem.utils.SplashActivityJava;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivityAdmin extends AppCompatActivity {
@@ -47,13 +48,20 @@ public class MainActivityAdmin extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.btnReviewVacationRequestsData).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivityAdmin.this, VacRecyclerActivity.class));
+            }
+        });
+
         findViewById(R.id.btnLogout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // clear the saved name that is saved in the SP, and redirect the user to the splash screen
                 //SharedPreferencesHelper.logout(MainActivityAdmin.this);
                 auth.signOut();
-                startActivity(new Intent(MainActivityAdmin.this, SplashActivity.class));
+                startActivity(new Intent(MainActivityAdmin.this, SplashActivityJava.class));
                 finish();
             }
         });

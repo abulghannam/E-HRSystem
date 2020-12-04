@@ -145,6 +145,7 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.container_fragment, fragment)
+                    .addToBackStack(null)
                     .commit();
             return true;
         }
@@ -155,6 +156,12 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed();
             return;
+        }
+
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0 ){
+            getSupportFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
         }
 
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){
