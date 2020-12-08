@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 public class VacRecyclerActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    MyAdapter adapter;
+    MyAdapterVac adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vac_recycler);
 
-        recyclerView =(RecyclerView) findViewById(R.id.recyclerview);
+        recyclerView =findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         FirebaseRecyclerOptions<RequestVacationData> options =
@@ -27,7 +27,7 @@ public class VacRecyclerActivity extends AppCompatActivity {
                 .setQuery(FirebaseDatabase.getInstance().getReference("Request vacations data"), RequestVacationData.class)
                 .build();
 
-        adapter =  new MyAdapter(options);
+        adapter =  new MyAdapterVac(options);
         recyclerView.setAdapter(adapter);
 
     }

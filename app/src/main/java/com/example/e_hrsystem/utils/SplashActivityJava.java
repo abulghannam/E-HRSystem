@@ -29,8 +29,8 @@ public class SplashActivityJava extends AppCompatActivity {
 
     FirebaseAuth auth;
     DatabaseReference dbRef;
-    TextView splashtext;
-    ImageView hricon;
+    TextView splashText;
+    ImageView hrIcon;
     User user;
     boolean isAdmin;
     @Override
@@ -42,11 +42,11 @@ public class SplashActivityJava extends AppCompatActivity {
         Animation top = AnimationUtils.loadAnimation(this,R.anim.top_animation);
         Animation bot = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
 
-         splashtext = findViewById(R.id.tvsplashtext);
-         hricon = findViewById(R.id.ivhricon);
+         splashText = findViewById(R.id.tvsplashtext);
+         hrIcon = findViewById(R.id.ivhricon);
 
-                splashtext.startAnimation(top);
-                hricon.startAnimation(bot);
+                splashText.startAnimation(top);
+                hrIcon.startAnimation(bot);
 
         auth = FirebaseAuth.getInstance();
         user = new User();

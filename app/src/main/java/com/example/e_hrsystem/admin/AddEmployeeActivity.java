@@ -22,11 +22,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class AddEmployeeActivity extends AppCompatActivity {
+    String gender = null;
 
-    private EditText rUsername, rEmail , rWorkingId , rPassword;
+    private EditText rUsername, rEmail, rWorkingId, rPassword;
     private RadioGroup radioGroup;
-    private RadioButton male,female,radioButton;
-    private FirebaseAuth auth;
+    RadioButton male, female, radioButton;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,22 +57,24 @@ public class AddEmployeeActivity extends AppCompatActivity {
                 final String workingID = rWorkingId.getText().toString().trim();
                 final String password = rPassword.getText().toString().trim();
                 final SwitchCompat switchIsHr = findViewById(R.id.switchIsHR);
-                final String gender;
 
-                int radioId = radioGroup.getCheckedRadioButtonId();
+                final int radioId = radioGroup.getCheckedRadioButtonId();
+
 
                 radioButton = findViewById(radioId);
+                if (radioButton != null) {
+                    if (radioButton.getText().equals("Male")) {
+                        gender = "male";
+                    } else if (radioButton.getText().equals("Female")) {
+                        gender = "female";
 
-                if (radioButton.getText().equals("Male")) {
-                    gender = "male";
-                }else{
-                    gender = "female";
-
+                    }
+                } else {
+                    Toast.makeText(AddEmployeeActivity.this, "please check the gender", Toast.LENGTH_SHORT).show();
                 }
 
 
-
-                    //validation of registration form
+                //validation of registration form
                 if (TextUtils.isEmpty(username)) {
                     rUsername.setError("Username is Required!");
                     rUsername.requestFocus();
@@ -84,68 +87,66 @@ public class AddEmployeeActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
-                {
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     rEmail.setError("Please provide a valid email!");
                     rEmail.requestFocus();
                     return;
                 }
 
-                if(TextUtils.isEmpty(workingID))
-                {
+                if (TextUtils.isEmpty(workingID)) {
                     rWorkingId.setError("Working ID is Required!");
                     rWorkingId.requestFocus();
                     return;
                 }
 
-                if(TextUtils.isEmpty(password))
-                {
+                if (TextUtils.isEmpty(password)) {
                     rPassword.setError("Password is Required");
                     rPassword.requestFocus();
                     return;
                 }
 
-                if(password.length()<6)
-                {
+                if (password.length() < 6) {
                     rPassword.setError("Password must be >= 6 characters");
                     return;
                 }
                 final boolean isAdmin;
-                if (switchIsHr.isChecked()){
+                if (switchIsHr.isChecked()) {
 
                     isAdmin = true;
-                }else {
+                } else {
                     isAdmin = false;
                 }
                 //saving a user and validate
-                auth.createUserWithEmailAndPassword(email,password)
+                auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful())
-                                {
-                                    User user = new User(username,email,workingID,password,isAdmin,gender,null);
+                                if (task.isSuccessful()) {
+                                    User user = new User(username, email, workingID, password, isAdmin, gender, false ,null);
                                     FirebaseDatabase.getInstance().getReference("users")
                                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            if(task.isSuccessful()){
-                                                Toast.makeText(AddEmployeeActivity.this,"Registration is completed"
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(AddEmployeeActivity.this, "Registration is completed"
                                                         , Toast.LENGTH_SHORT).show();
-                                            }
-                                            else
-                                            {
-                                                Toast.makeText(AddEmployeeActivity.this,"Failed to Register,Try again!"
+                                                rUsername.setText("");
+                                                rPassword.setText("");
+                                                rWorkingId.setText("");
+                                                rEmail.setText("");
+                                                switchIsHr.setChecked(false);
+                                                radioGroup.clearCheck();
+
+                                            } else {
+                                                Toast.makeText(AddEmployeeActivity.this, "Failed to Register,Try again!"
                                                         , Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                     });
 
-                                }
-                                else
-                                {
-                                    Toast.makeText(AddEmployeeActivity.this,"Email is already exists, Try again!"
+                                } else {
+                                    Toast.makeText(AddEmployeeActivity.this, "Email is already exists, Try again!"
                                             , Toast.LENGTH_SHORT).show();
                                 }
 

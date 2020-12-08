@@ -12,10 +12,10 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyAdapter extends FirebaseRecyclerAdapter<RequestVacationData,MyAdapter.myviewholder> {
+public class MyAdapterVac extends FirebaseRecyclerAdapter<RequestVacationData, MyAdapterVac.myviewholder> {
 
 
-    public MyAdapter(@NonNull FirebaseRecyclerOptions<RequestVacationData> options) {
+    public MyAdapterVac(@NonNull FirebaseRecyclerOptions<RequestVacationData> options) {
         super(options);
     }
 

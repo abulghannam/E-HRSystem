@@ -9,6 +9,7 @@ class User constructor(
         var password: String? = null,
         var isAdmin: Boolean = false,
         var gender:String?="",
+        var isDeleted: Boolean = false,
         var history: ArrayList<TimeLog>? = null
 
 )

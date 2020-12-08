@@ -20,8 +20,6 @@
         <activity android:name=".VacRecyclerActivity" />
         <activity android:name=".admin.DeleteEmployeeActivity" />
         <activity android:name=".admin.AddEmployeeActivity" />
-        <activity android:name=".utils.SplashActivity">
-        </activity>
         <activity android:name=".authentication.LoginActivity" />
         <activity android:name=".MainActivityAdmin" />
         <activity android:name=".employee.RequestVacationActivity" />

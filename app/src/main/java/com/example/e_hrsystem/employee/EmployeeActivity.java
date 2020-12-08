@@ -19,7 +19,6 @@ import com.example.e_hrsystem.employeeFragments.ProfileFragment;
 import com.example.e_hrsystem.employeeFragments.VacationsFragment;
 import com.example.e_hrsystem.model.User;
 import com.example.e_hrsystem.utils.SharedPreferencesHelper;
-import com.example.e_hrsystem.utils.SplashActivity;
 import com.example.e_hrsystem.utils.SplashActivityJava;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;

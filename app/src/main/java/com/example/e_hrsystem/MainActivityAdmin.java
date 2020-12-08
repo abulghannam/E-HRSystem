@@ -11,7 +11,6 @@ import com.example.e_hrsystem.admin.AddEmployeeActivity;
 import com.example.e_hrsystem.admin.DeleteEmployeeActivity;
 import com.example.e_hrsystem.authentication.LoginActivity;
 import com.example.e_hrsystem.utils.SharedPreferencesHelper;
-import com.example.e_hrsystem.utils.SplashActivity;
 import com.example.e_hrsystem.utils.SplashActivityJava;
 import com.google.firebase.auth.FirebaseAuth;
 

@@ -40,12 +40,15 @@ import java.util.ArrayList;
 public class LoginActivity extends AppCompatActivity {
 
 
-    EditText etEmail,etPassword;
+    EditText etEmail, etPassword;
     FirebaseAuth auth;
     Button btnLogin;
     DatabaseReference dbRef;
     boolean isAdmin;
+    boolean isDeleted;
     User user;
+    User userDelete;
+    DatabaseReference dbRefDeleted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +58,10 @@ public class LoginActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmailLogin);
         etPassword = findViewById(R.id.etPasswordLogin);
         btnLogin = findViewById(R.id.btnLogin);
+        dbRefDeleted = FirebaseDatabase.getInstance().getReference().child("users");
         auth = FirebaseAuth.getInstance();
         user = new User();
+        userDelete = new User();
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,35 +70,85 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void startLogin(){
+    private void checkDelete() {
+        final String userEmail = etEmail.getText().toString();
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference usersRef = rootRef.child("users");
+
+        if (!TextUtils.isEmpty(userEmail)) {
+
+            usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot ds : snapshot.getChildren()) {
+                        String id = ds.getKey();
+                        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("users").child(id);
+                        db.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                userDelete = snapshot.getValue(User.class);
+                                String systemEmail = userDelete.getEmail();
+                                if (userEmail.equals(systemEmail)) {
+                                    isDeleted = userDelete.isDeleted();
+                                    if (isDeleted) {
+                                        Toast.makeText(LoginActivity.this, "Account was deleted", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        startLogin();
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+    }
+
+    private void startLogin() {
         final String strEmail = etEmail.getText().toString();
         final String strPassword = etPassword.getText().toString();
 
-        if (!TextUtils.isEmpty(strEmail) && !TextUtils.isEmpty(strPassword)){
-            auth.signInWithEmailAndPassword(strEmail,strPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        if (!TextUtils.isEmpty(strEmail) && !TextUtils.isEmpty(strPassword)) {
+            auth.signInWithEmailAndPassword(strEmail, strPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+                    if (task.isSuccessful()) {
 
-                            dbRef = FirebaseDatabase.getInstance().getReference().child("users").child(auth.getCurrentUser().getUid());
-                            getAdmin();
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    if (isAdmin){
+                        dbRef = FirebaseDatabase.getInstance().getReference().child("users").child(auth.getCurrentUser().getUid());
+                        getAdmin();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (!isDeleted) {
+
+
+                                    if (isAdmin) {
                                         startActivity(new Intent(LoginActivity.this, MainActivityAdmin.class));
                                         finish();
 
-                                    }else{
+                                    } else {
                                         startActivity(new Intent(LoginActivity.this, EmployeeActivity.class));
                                         finish();
 
                                     }
-
+                                }else{
+                                    auth.signOut();
+                                    Toast.makeText(LoginActivity.this, "deleeeteeed", Toast.LENGTH_SHORT).show();
                                 }
-                            },1500);
-                        }
-                    
+                            }
+                        }, 1500);
+                    }
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -101,7 +156,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-        }else {
+        } else {
             if (TextUtils.isEmpty(strPassword)) {
                 etPassword.setError("Password is Required!");
                 etPassword.requestFocus();
@@ -115,8 +170,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
 
-            if (!Patterns.EMAIL_ADDRESS.matcher(strEmail).matches())
-            {
+            if (!Patterns.EMAIL_ADDRESS.matcher(strEmail).matches()) {
                 etEmail.setError("Please provide a valid email!");
                 etEmail.requestFocus();
             }
@@ -125,13 +179,15 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void getAdmin(){
+    private void getAdmin() {
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 user = snapshot.getValue(User.class);
 
                 isAdmin = user.isAdmin();
+                isDeleted = user.isDeleted();
+
             }
 
             @Override
