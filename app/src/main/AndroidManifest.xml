@@ -4,7 +4,7 @@
 <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -18,12 +18,14 @@
 
         </activity>
         <activity android:name=".VacRecyclerActivity" />
+        <activity android:name=".LevRecyclerActivity" />
         <activity android:name=".admin.DeleteEmployeeActivity" />
         <activity android:name=".admin.AddEmployeeActivity" />
         <activity android:name=".authentication.LoginActivity" />
         <activity android:name=".MainActivityAdmin" />
         <activity android:name=".employee.RequestVacationActivity" />
         <activity android:name=".employee.RequestLeaveActivity" />
+        <activity android:name=".offerselements.Hotels" />
         <activity
             android:name=".employee.EmployeeActivity"
             android:theme="@style/AppTheme.NoActionBar" />

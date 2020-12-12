@@ -2,10 +2,16 @@ package com.example.e_hrsystem;
 
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.e_hrsystem.model.RequestVacationData;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +24,14 @@ public class VacRecyclerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vac_recycler);
+
+//        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+//        try {
+//            Date date = fmt.parse("2020-12-20");
+//            Log.e("xxxxxxxxxx " , date.getTime() + "");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
         recyclerView =findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

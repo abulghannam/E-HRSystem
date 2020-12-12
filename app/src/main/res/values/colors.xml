@@ -8,7 +8,8 @@
 
     <color name="color_blue">#123B5A</color>
     <color name="color_gray">#7E8287</color>
-    <color name="color_green">#659E68</color>
+    <color name="color_green">#3AC842</color>
+    <color name="color_red">#B82E24</color>
 
     <color name="colorNavIcon">#FFFFFF</color>
     <color name="colorToolBar">#E19B7B</color>

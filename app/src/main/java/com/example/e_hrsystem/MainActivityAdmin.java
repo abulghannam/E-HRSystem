@@ -54,6 +54,13 @@ public class MainActivityAdmin extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.btnReviewLeaveRequestsData).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivityAdmin.this, LevRecyclerActivity.class));
+            }
+        });
+
         findViewById(R.id.btnLogout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

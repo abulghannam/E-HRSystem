@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="20dp"
+    app:cardCornerRadius="3dp"
     app:cardUseCompatPadding="true"
     app:cardBackgroundColor="@color/design_default_color_background">
 
@@ -12,28 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Type"
-                android:textSize="20sp"
-                android:layout_margin="10dp"/>
-
-            <TextView
-                android:id="@+id/tv_type"
-                android:textSize="20sp"
-                android:layout_margin="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Type"/>
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,39 +21,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Start Date"
+                android:text="Time"
                 android:textSize="20sp"
                 android:layout_margin="10dp"/>
 
             <TextView
-                android:id="@+id/tv_start"
+                android:id="@+id/tv_timeLev"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Start"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="End Date"
-                android:textSize="20sp"
-                android:layout_margin="10dp"/>
-
-            <TextView
-                android:id="@+id/tv_end"
-                android:textSize="20sp"
-                android:layout_margin="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="End"/>
+                android:hint="Time"/>
 
         </LinearLayout>
 
@@ -92,7 +48,7 @@
                 android:layout_margin="10dp"/>
 
             <TextView
-                android:id="@+id/tv_moreInfo"
+                android:id="@+id/tv_moreInfoLev"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
                 android:layout_width="wrap_content"
@@ -114,7 +70,7 @@
                 android:layout_margin="10dp"/>
 
             <TextView
-                android:id="@+id/tv_ID"
+                android:id="@+id/tv_IDLev"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
                 android:layout_width="wrap_content"
@@ -136,7 +92,7 @@
                 android:layout_margin="10dp"/>
 
             <TextView
-                android:id="@+id/tv_name"
+                android:id="@+id/tv_nameLev"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
                 android:layout_width="wrap_content"
@@ -144,30 +100,6 @@
                 android:hint="Name"/>
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnApprove"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:text="Approve"
-                android:background="@color/color_green"/>
-
-            <Button
-                android:id="@+id/btnDecline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:text="Decline"
-                android:background="@color/color_red"/>
-
-        </LinearLayout>
-
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
