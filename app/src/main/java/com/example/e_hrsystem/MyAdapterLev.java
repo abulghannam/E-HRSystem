@@ -51,7 +51,7 @@ public class MyAdapterLev extends FirebaseRecyclerAdapter<RequestLeaveData, MyAd
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
-                                approveLevRequest(requestLeaveData,true);
+                                approveLevRequest(requestLeaveData,"Approved");
                                 Toast.makeText(view.getContext(), "You have been approved this request",
                                         Toast.LENGTH_SHORT).show();
                             }
@@ -80,7 +80,7 @@ public class MyAdapterLev extends FirebaseRecyclerAdapter<RequestLeaveData, MyAd
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
-                                declineLevRequest(requestLeaveData,false);
+                                declineLevRequest(requestLeaveData,"Declined");
                                 Toast.makeText(view.getContext(), "You have been declined this request",
                                         Toast.LENGTH_SHORT).show();
                             }
@@ -98,14 +98,14 @@ public class MyAdapterLev extends FirebaseRecyclerAdapter<RequestLeaveData, MyAd
         });
     }
 
-    private void approveLevRequest(@NonNull RequestLeaveData requestLeaveData, boolean isApproved) {
+    private void approveLevRequest(@NonNull RequestLeaveData requestLeaveData, String isApproved) {
         dbRef.child(requestLeaveData.getId()).child("approved").setValue(isApproved);
 //        System.currentTimeMillis();
 //        new Date(120365)
     }
 
 
-    private void declineLevRequest(RequestLeaveData requestLeaveData, boolean isApproved) {
+    private void declineLevRequest(RequestLeaveData requestLeaveData, String isApproved) {
         dbRef.child(requestLeaveData.getId()).child("approved").setValue(isApproved);
     }
 

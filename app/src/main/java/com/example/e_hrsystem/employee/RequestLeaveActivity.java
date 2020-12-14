@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.example.e_hrsystem.R;
 import com.example.e_hrsystem.model.RequestLeaveData;
-import com.example.e_hrsystem.model.RequestVacationData;
 import com.example.e_hrsystem.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -105,7 +104,7 @@ public class RequestLeaveActivity extends AppCompatActivity {
                     } else {
 
                         DatabaseReference dbRefCurrentUserId = databaseReference.child(id);
-                        RequestLeaveData levData = new RequestLeaveData(time,MoreInfo,id,false,tvUsernameLev.getText().toString());
+                        RequestLeaveData levData = new RequestLeaveData(time,MoreInfo,id,"In queue",tvUsernameLev.getText().toString());
                         dbRefCurrentUserId.setValue(levData);
                         Toast.makeText(RequestLeaveActivity.this, "The Request has been sent", Toast.LENGTH_SHORT).show();
                         tvPickedTime.setText("");

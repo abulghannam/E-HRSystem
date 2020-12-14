@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.e_hrsystem.R;
+import com.example.e_hrsystem.ViewLevRequestActivity;
 import com.example.e_hrsystem.ViewVacRequestActivity;
 import com.example.e_hrsystem.employee.RequestLeaveActivity;
 import com.example.e_hrsystem.employee.RequestVacationActivity;
@@ -57,6 +58,7 @@ public class VacationsFragment extends Fragment {
         btnReviewYourLev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ViewLevRequestActivity.class));
 
             }
         });
