@@ -55,7 +55,8 @@ public class MyAdapterVac extends FirebaseRecyclerAdapter<RequestVacationData, M
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface arg0, int arg1) {
-                                        approveVacRequest(requestVacationData,true);
+                                        approveVacRequest(requestVacationData,"Approved");
+
                                         Toast.makeText(view.getContext(), "You have been approved this request",
                                                 Toast.LENGTH_SHORT).show();
                                     }
@@ -85,7 +86,7 @@ public class MyAdapterVac extends FirebaseRecyclerAdapter<RequestVacationData, M
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
-                                declineVacRequest(requestVacationData,false);
+                                declineVacRequest(requestVacationData,"Declined");
                                 Toast.makeText(view.getContext(), "You have been declined this request",
                                         Toast.LENGTH_SHORT).show();
                             }
@@ -104,14 +105,14 @@ public class MyAdapterVac extends FirebaseRecyclerAdapter<RequestVacationData, M
 
     }
 
-    private void approveVacRequest(@NonNull RequestVacationData requestVacationData,boolean isApproved) {
+    private void approveVacRequest(@NonNull RequestVacationData requestVacationData,String isApproved) {
         dbRef.child(requestVacationData.getId()).child("approved").setValue(isApproved);
 //        System.currentTimeMillis();
 //        new Date(120365)
     }
 
 
-    private void declineVacRequest(RequestVacationData requestVacationData, boolean isApproved) {
+    private void declineVacRequest(RequestVacationData requestVacationData, String isApproved) {
         dbRef.child(requestVacationData.getId()).child("approved").setValue(isApproved);
     }
 

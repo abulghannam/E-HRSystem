@@ -8,14 +8,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.e_hrsystem.R;
+import com.example.e_hrsystem.ViewVacRequestActivity;
 import com.example.e_hrsystem.employee.RequestLeaveActivity;
 import com.example.e_hrsystem.employee.RequestVacationActivity;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.fragment.app.Fragment;
 
 public class VacationsFragment extends Fragment {
     View view;
-    Button firstButton,secondButton;
+    Button firstButton,secondButton,btnReviewYourVac,btnReviewYourLev;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +41,23 @@ public class VacationsFragment extends Fragment {
             public void onClick(View view1) {
 // display a message by using a Toast
                 startActivity(new Intent(getActivity(), RequestLeaveActivity.class));
+            }
+        });
+
+        btnReviewYourVac = view.findViewById(R.id.btnReviewVacationReq);
+        btnReviewYourVac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ViewVacRequestActivity.class));
+
+            }
+        });
+
+        btnReviewYourLev = view.findViewById(R.id.btnReviewLeaveReq);
+        btnReviewYourLev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

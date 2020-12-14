@@ -1,12 +1,13 @@
 package com.example.e_hrsystem.admin;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,7 +55,30 @@ public class DeleteEmployeeActivity extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteUser();
+                AlertDialog.Builder dialog1 = new AlertDialog.Builder(DeleteEmployeeActivity.this);
+                dialog1.setTitle("Are you sure?");
+                dialog1.setMessage("Deleting this account will result in completely removing this " +
+                        "account from the system and you won't be able to return it back.");
+                dialog1.setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                deleteUser();
+                                if(!userEmail.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(userEmail).matches())
+                                Toast.makeText(getApplicationContext(), "You have been deleted this account",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                dialog1.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+                AlertDialog alertDialog = dialog1.create();
+                alertDialog.show();
+
             }
         });
 
@@ -62,7 +86,20 @@ public class DeleteEmployeeActivity extends AppCompatActivity {
 
     private void deleteUser(){
         userEmail = etDeleteUser.getText().toString();
-        if (!TextUtils.isEmpty(userEmail)){
+        if (TextUtils.isEmpty(userEmail)) {
+            etDeleteUser.setError("Email is Required!");
+            etDeleteUser.requestFocus();
+            return;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
+            etDeleteUser.setError("Please provide a valid email!");
+            etDeleteUser.requestFocus();
+            return;
+        }
+
+        if(!TextUtils.isEmpty(userEmail)){
+
             Toast.makeText(this, userEmail, Toast.LENGTH_SHORT).show();
             dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -75,17 +112,17 @@ public class DeleteEmployeeActivity extends AppCompatActivity {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 userModel = snapshot.getValue(User.class);
-                                boolean pass = userModel.isDeleted();
+//                                boolean pass = userModel.isDeleted();
                                 systemEmail = userModel.getEmail();
-                                Toast.makeText(DeleteEmployeeActivity.this, String.valueOf(pass), Toast.LENGTH_SHORT).show();
-                                Toast.makeText(DeleteEmployeeActivity.this, String.valueOf(systemEmail), Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(DeleteEmployeeActivity.this, String.valueOf(pass), Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(DeleteEmployeeActivity.this, String.valueOf(systemEmail), Toast.LENGTH_SHORT).show();
                                 if (userEmail.equals(systemEmail)){
 
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("deleted", true);
                                     databaseReference.updateChildren(updates);
 
-                                    Toast.makeText(DeleteEmployeeActivity.this, "equals", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(DeleteEmployeeActivity.this, "equals", Toast.LENGTH_SHORT).show();
                                 }
                             }
 
@@ -103,9 +140,10 @@ public class DeleteEmployeeActivity extends AppCompatActivity {
 
                 }
             });
-        }else{
-            Toast.makeText(this, "user is empty", Toast.LENGTH_SHORT).show();
         }
+//        else{
+//            Toast.makeText(this, "Please insert Email", Toast.LENGTH_SHORT).show();
+//        }
     }
 
 //    private void initListeners() {

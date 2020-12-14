@@ -99,7 +99,7 @@ public class RequestVacationActivity extends AppCompatActivity {
 
                         DatabaseReference dbRefCurrentUserId = databaseReference.child(id);
                         RequestVacationData vacData = new RequestVacationData(type, StartDateVac, EndDateVac,
-                                MoreInfo, id,false,tvUsername.getText().toString());
+                                MoreInfo, id,"In queue",tvUsername.getText().toString());
                         dbRefCurrentUserId.setValue(vacData);
                         Toast.makeText(RequestVacationActivity.this, "The Request has been sent",
                                 Toast.LENGTH_SHORT).show();

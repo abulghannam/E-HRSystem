@@ -143,7 +143,7 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 }else{
                                     auth.signOut();
-                                    Toast.makeText(LoginActivity.this, "deleeeteeed", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "This account is deleted ,please return back to admin.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }, 1500);
