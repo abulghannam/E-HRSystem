@@ -4,19 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.e_hrsystem.MainActivityAdmin;
+import com.example.e_hrsystem.admin.MainAdminActivity;
 import com.example.e_hrsystem.R;
 import com.example.e_hrsystem.authentication.LoginActivity;
-import com.example.e_hrsystem.employee.EmployeeActivity;
+import com.example.e_hrsystem.employee.MainEmployeeActivity;
 import com.example.e_hrsystem.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -60,11 +58,11 @@ public class SplashActivityJava extends AppCompatActivity {
                         @Override
                         public void run() {
                             if (isAdmin) {
-                                startActivity(new Intent(SplashActivityJava.this, MainActivityAdmin.class));
+                                startActivity(new Intent(SplashActivityJava.this, MainAdminActivity.class));
                                 finish();
 
                             }else{
-                                startActivity(new Intent(SplashActivityJava.this, EmployeeActivity.class));
+                                startActivity(new Intent(SplashActivityJava.this, MainEmployeeActivity.class));
                                 finish();
                             }
 

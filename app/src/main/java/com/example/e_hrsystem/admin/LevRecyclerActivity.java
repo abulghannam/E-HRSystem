@@ -1,9 +1,9 @@
-package com.example.e_hrsystem;
+package com.example.e_hrsystem.admin;
 
 import android.os.Bundle;
 
+import com.example.e_hrsystem.R;
 import com.example.e_hrsystem.model.RequestLeaveData;
-import com.example.e_hrsystem.model.RequestVacationData;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 

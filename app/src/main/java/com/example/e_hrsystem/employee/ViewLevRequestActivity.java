@@ -1,4 +1,4 @@
-package com.example.e_hrsystem;
+package com.example.e_hrsystem.employee;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.e_hrsystem.R;
 import com.example.e_hrsystem.model.RequestLeaveData;
-import com.example.e_hrsystem.model.RequestVacationData;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

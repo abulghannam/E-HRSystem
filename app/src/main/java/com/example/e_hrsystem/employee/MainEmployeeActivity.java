@@ -1,10 +1,8 @@
 package com.example.e_hrsystem.employee;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.ContactsContract;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -18,7 +16,6 @@ import com.example.e_hrsystem.employeeFragments.OffersFragment;
 import com.example.e_hrsystem.employeeFragments.ProfileFragment;
 import com.example.e_hrsystem.employeeFragments.VacationsFragment;
 import com.example.e_hrsystem.model.User;
-import com.example.e_hrsystem.utils.SharedPreferencesHelper;
 import com.example.e_hrsystem.utils.SplashActivityJava;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,7 +35,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-public class EmployeeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainEmployeeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
@@ -55,7 +52,7 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employee);
+        setContentView(R.layout.activity_employee_drawer);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -130,7 +127,7 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
 
             case R.id.navigation_logout:
                         auth.signOut();
-                        startActivity(new Intent(EmployeeActivity.this, SplashActivityJava.class));
+                        startActivity(new Intent(MainEmployeeActivity.this, SplashActivityJava.class));
                         finish();
                 break;
         }

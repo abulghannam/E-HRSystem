@@ -9,10 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewVacRequestActivity"
+        <activity android:name=".authentication.ForgotPasswordActivity"></activity>
+        <activity
+            android:name=".employee.ViewVacRequestActivity"
             android:theme="@style/AppTheme.PopUp" />
-        <activity android:name=".ViewLevRequestActivity"
-            android:theme="@style/AppTheme.PopUp"/>
+        <activity
+            android:name=".employee.ViewLevRequestActivity"
+            android:theme="@style/AppTheme.PopUp" />
         <activity android:name=".utils.SplashActivityJava">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,17 +23,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VacRecyclerActivity" />
-        <activity android:name=".LevRecyclerActivity" />
+        <activity android:name=".admin.VacRecyclerActivity" />
+        <activity android:name=".admin.LevRecyclerActivity" />
         <activity android:name=".admin.DeleteEmployeeActivity" />
         <activity android:name=".admin.AddEmployeeActivity" />
         <activity android:name=".authentication.LoginActivity" />
-        <activity android:name=".MainActivityAdmin" />
         <activity android:name=".employee.RequestVacationActivity" />
         <activity android:name=".employee.RequestLeaveActivity" />
         <activity android:name=".offerselements.Hotels" />
         <activity
-            android:name=".employee.EmployeeActivity"
+            android:name=".admin.MainAdminActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".employee.MainEmployeeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

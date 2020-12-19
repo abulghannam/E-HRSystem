@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnReviewVacationReq"
+        android:id="@+id/btnReviewVacationReqAdmin"
         android:layout_width="169dp"
         android:layout_height="74dp"
         android:background="@drawable/rounded_corner_for_button"
@@ -28,14 +28,14 @@
         android:text="Review your pending vacations request"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnReviewLeaveReq"
+        app:layout_constraintEnd_toStartOf="@+id/btnReviewLeaveReqAdmin"
         app:layout_constraintHorizontal_bias="0.28"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.077" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnReviewLeaveReq"
+        android:id="@+id/btnReviewLeaveReqAdmin"
         android:layout_width="169dp"
         android:layout_height="74dp"
         android:background="@drawable/rounded_corner_for_button"
@@ -51,7 +51,7 @@
         app:layout_constraintVertical_bias="0.077" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRequestVacation"
+        android:id="@+id/btnRequestVacationAdmin"
         android:layout_width="278dp"
         android:layout_height="40dp"
         android:background="@drawable/rounded_corner_for_button"
@@ -68,7 +68,7 @@
         tools:layout_editor_absoluteY="384dp" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRequestLeave"
+        android:id="@+id/btnRequestLeaveAdmin"
         android:layout_width="278dp"
         android:layout_height="40dp"
         android:background="@drawable/rounded_corner_for_button"

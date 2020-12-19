@@ -1,4 +1,4 @@
-package com.example.e_hrsystem;
+package com.example.e_hrsystem.admin;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.e_hrsystem.R;
 import com.example.e_hrsystem.model.RequestVacationData;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;

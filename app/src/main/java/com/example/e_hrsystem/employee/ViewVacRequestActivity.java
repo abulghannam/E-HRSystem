@@ -1,4 +1,4 @@
-package com.example.e_hrsystem;
+package com.example.e_hrsystem.employee;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.e_hrsystem.R;
 import com.example.e_hrsystem.employee.RequestVacationActivity;
 import com.example.e_hrsystem.model.RequestVacationData;
 import com.example.e_hrsystem.model.User;

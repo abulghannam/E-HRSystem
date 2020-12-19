@@ -7,8 +7,8 @@
 //import android.view.animation.AnimationUtils
 //import android.widget.ImageView
 //import android.widget.TextView
-//import com.example.e_hrsystem.MainActivityAdmin
-//import com.example.e_hrsystem.employee.EmployeeActivity
+//import com.example.e_hrsystem.admin.MainAdminActivity
+//import com.example.e_hrsystem.employee.MainEmployeeActivity
 //import com.example.e_hrsystem.R
 //import com.example.e_hrsystem.authentication.LoginActivity
 //
@@ -33,9 +33,9 @@
 //            if (SharedPreferencesHelper.isUserLoggedIn(this)) {
 //                val isAdmin = false
 //                if(isAdmin){
-//                    startActivity(Intent(this@SplashActivity, MainActivityAdmin::class.java))
+//                    startActivity(Intent(this@SplashActivity, MainAdminActivity::class.java))
 //                }else{
-//                    startActivity(Intent(this@SplashActivity, EmployeeActivity::class.java))
+//                    startActivity(Intent(this@SplashActivity, MainEmployeeActivity::class.java))
 //                }
 //            } else {
 //                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))

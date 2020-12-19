@@ -2,7 +2,6 @@ package com.example.e_hrsystem.authentication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,14 +11,13 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.e_hrsystem.MainActivityAdmin;
+import com.example.e_hrsystem.admin.MainAdminActivity;
 import com.example.e_hrsystem.R;
-import com.example.e_hrsystem.employee.EmployeeActivity;
-import com.example.e_hrsystem.model.TimeLog;
+import com.example.e_hrsystem.employee.MainEmployeeActivity;
 import com.example.e_hrsystem.model.User;
-import com.example.e_hrsystem.utils.SharedPreferencesHelper;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -32,14 +30,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
-
-
-import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
-
+    TextView forgotPassword;
     EditText etEmail, etPassword;
     FirebaseAuth auth;
     Button btnLogin;
@@ -58,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmailLogin);
         etPassword = findViewById(R.id.etPasswordLogin);
         btnLogin = findViewById(R.id.btnLogin);
+        forgotPassword = findViewById(R.id.tvForgotPassword);
         dbRefDeleted = FirebaseDatabase.getInstance().getReference().child("users");
         auth = FirebaseAuth.getInstance();
         user = new User();
@@ -66,6 +61,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startLogin();
+            }
+        });
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,ForgotPasswordActivity.class));
             }
         });
     }
@@ -123,32 +125,38 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
+                        FirebaseUser userVerify = FirebaseAuth.getInstance().getCurrentUser();
 
-                        dbRef = FirebaseDatabase.getInstance().getReference().child("users").child(auth.getCurrentUser().getUid());
-                        getAdmin();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (!isDeleted) {
+                        if (userVerify.isEmailVerified()) {
+                            dbRef = FirebaseDatabase.getInstance().getReference().child("users").child(auth.getCurrentUser().getUid());
+                            getAdmin();
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (!isDeleted) {
 
+                                        if (isAdmin) {
+                                            startActivity(new Intent(LoginActivity.this, MainAdminActivity.class));
+                                            finish();
 
-                                    if (isAdmin) {
-                                        startActivity(new Intent(LoginActivity.this, MainActivityAdmin.class));
-                                        finish();
+                                        } else {
+                                            startActivity(new Intent(LoginActivity.this, MainEmployeeActivity.class));
+                                            finish();
 
+                                        }
                                     } else {
-                                        startActivity(new Intent(LoginActivity.this, EmployeeActivity.class));
-                                        finish();
-
+                                        auth.signOut();
+                                        Toast.makeText(LoginActivity.this, "This account is deleted ,please return back to admin.", Toast.LENGTH_SHORT).show();
                                     }
-                                }else{
-                                    auth.signOut();
-                                    Toast.makeText(LoginActivity.this, "This account is deleted ,please return back to admin.", Toast.LENGTH_SHORT).show();
                                 }
+                            }, 1500);
+                        }
+                        else
+                            {
+                                userVerify.sendEmailVerification();
+                                Toast.makeText(LoginActivity.this, "Check your email to verify your account", Toast.LENGTH_SHORT).show();
                             }
-                        }, 1500);
                     }
-
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -219,7 +227,7 @@ public class LoginActivity extends AppCompatActivity {
 //                if (username.equals("employee") &&
 //                        password.equals("employee123")) {
 //                    Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
-//                    intent = new Intent(LoginActivity.this, EmployeeActivity.class);
+//                    intent = new Intent(LoginActivity.this, MainEmployeeActivity.class);
 //
 //                    user.setEmail("employee@test.com");
 //                    user.setUsername("employee");
@@ -234,7 +242,7 @@ public class LoginActivity extends AppCompatActivity {
 //                if (username.equals("admin") &&
 //                        password.equals("admin123")) {
 //                    Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
-//                    intent = new Intent(getApplicationContext(), MainActivityAdmin.class);
+//                    intent = new Intent(getApplicationContext(), MainAdminActivity.class);
 //
 //                    user.setEmail("admin@test.com");
 //                    user.setUsername("admin");

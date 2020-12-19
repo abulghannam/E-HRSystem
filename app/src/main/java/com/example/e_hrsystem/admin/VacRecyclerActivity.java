@@ -1,16 +1,12 @@
-package com.example.e_hrsystem;
+package com.example.e_hrsystem.admin;
 
 
 import android.os.Bundle;
-import android.util.Log;
 
+import com.example.e_hrsystem.R;
 import com.example.e_hrsystem.model.RequestVacationData;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,6 +31,7 @@ public class VacRecyclerActivity extends AppCompatActivity {
 
         recyclerView =findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
         FirebaseRecyclerOptions<RequestVacationData> options =
                 new FirebaseRecyclerOptions.Builder<RequestVacationData>()

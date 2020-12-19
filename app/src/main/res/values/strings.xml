@@ -13,6 +13,7 @@
     <string name="title_vacations">Vacations</string>
     <string name="title_offers">Offers</string>
     <string name="title_attendance">Attendance</string>
+    <string name="title_console">Admin Console</string>
 
     <string name="open">Open</string>
     <string name="close">Close</string>

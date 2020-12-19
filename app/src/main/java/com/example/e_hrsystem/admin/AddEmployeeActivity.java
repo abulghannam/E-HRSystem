@@ -12,13 +12,18 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
 import com.example.e_hrsystem.R;
 import com.example.e_hrsystem.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class AddEmployeeActivity extends AppCompatActivity {
@@ -116,42 +121,76 @@ public class AddEmployeeActivity extends AppCompatActivity {
                 } else {
                     isAdmin = false;
                 }
-                //saving a user and validate
-                auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    User user = new User(username, email, workingID, password, isAdmin, gender, false ,null);
-                                    FirebaseDatabase.getInstance().getReference("users")
-                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Toast.makeText(AddEmployeeActivity.this, "Registration is completed"
-                                                        , Toast.LENGTH_SHORT).show();
-                                                rUsername.setText("");
-                                                rPassword.setText("");
-                                                rWorkingId.setText("");
-                                                rEmail.setText("");
-                                                switchIsHr.setChecked(false);
-                                                radioGroup.clearCheck();
 
-                                            } else {
-                                                Toast.makeText(AddEmployeeActivity.this, "Failed to Register,Try again!"
-                                                        , Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    });
+                final Query queryWorkingID = FirebaseDatabase.getInstance().getReference("users").orderByChild("workingID").equalTo(workingID);
+                Query queryUserName = FirebaseDatabase.getInstance().getReference("users").orderByChild("username").equalTo(username);
 
-                                } else {
-                                    Toast.makeText(AddEmployeeActivity.this, "Email is already exists, Try again!"
-                                            , Toast.LENGTH_SHORT).show();
+                queryUserName.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            Toast.makeText(AddEmployeeActivity.this, "username already using", Toast.LENGTH_SHORT).show();
+                        }else{
+                            queryWorkingID.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if (snapshot.exists()) {
+                                        Toast.makeText(AddEmployeeActivity.this, "Working Id already using", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        auth.createUserWithEmailAndPassword(email, password)
+                                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                                        if (task.isSuccessful()) {
+                                                            User user = new User(username, email, workingID, isAdmin, gender, false, null);
+                                                            FirebaseDatabase.getInstance().getReference("users")
+                                                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                    if (task.isSuccessful()) {
+                                                                        Toast.makeText(AddEmployeeActivity.this, "Registration is completed"
+                                                                                , Toast.LENGTH_SHORT).show();
+                                                                        rUsername.setText("");
+                                                                        rPassword.setText("");
+                                                                        rWorkingId.setText("");
+                                                                        rEmail.setText("");
+                                                                        switchIsHr.setChecked(false);
+                                                                        radioGroup.clearCheck();
+
+                                                                    } else {
+                                                                        Toast.makeText(AddEmployeeActivity.this, "Failed to Register,Try again!"
+                                                                                , Toast.LENGTH_SHORT).show();
+                                                                    }
+                                                                }
+                                                            });
+
+                                                        } else {
+                                                            Toast.makeText(AddEmployeeActivity.this, "Email is already exists, Try again!"
+                                                                    , Toast.LENGTH_SHORT).show();
+                                                        }
+
+                                                    }
+                                                });
+
+                                    }
                                 }
 
-                            }
-                        });
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                //saving a user and validate
             }
         });
     }

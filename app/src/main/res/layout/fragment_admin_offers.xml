@@ -1,88 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="342dp"
+        android:layout_height="121dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Vacations"
+        android:fontFamily="@font/carter_one"
+        android:gravity="center"
+        android:text="Check the latest exclusive offers for the company's employees"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="@color/design_default_color_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnReviewVacationReq"
-        android:layout_width="169dp"
-        android:layout_height="74dp"
-        android:background="@drawable/rounded_corner_for_button"
-        android:fontFamily="@font/carter_one"
-        android:gravity="center"
-        android:text="Review your pending vacations request"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnReviewLeaveReq"
-        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.077" />
+        app:layout_constraintVertical_bias="0.101" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnReviewLeaveReq"
-        android:layout_width="169dp"
-        android:layout_height="74dp"
-        android:background="@drawable/rounded_corner_for_button"
-        android:fontFamily="@font/carter_one"
-        android:gravity="center"
-        android:text="Review your pending leaves request"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.933"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.077" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRequestVacation"
+        android:id="@+id/btnHotelsAdmin"
         android:layout_width="278dp"
-        android:layout_height="40dp"
+        android:layout_height="70dp"
         android:background="@drawable/rounded_corner_for_button"
         android:fontFamily="@font/carter_one"
         android:gravity="center"
-        android:text="Request a vacation"
+        android:text="Hotels"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802"
-        tools:layout_editor_absoluteY="384dp" />
+        app:layout_constraintVertical_bias="0.395" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRequestLeave"
+        android:id="@+id/btnRestCafeAdmin"
         android:layout_width="278dp"
-        android:layout_height="40dp"
+        android:layout_height="70dp"
         android:background="@drawable/rounded_corner_for_button"
         android:fontFamily="@font/carter_one"
         android:gravity="center"
-        android:text="Request a leave"
+        android:text="Restaurants and Cafes"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="455dp" />
+        app:layout_constraintVertical_bias="0.636" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnOthersAdmin"
+        android:layout_width="278dp"
+        android:layout_height="70dp"
+        android:background="@drawable/rounded_corner_for_button"
+        android:fontFamily="@font/carter_one"
+        android:gravity="center"
+        android:text="Others"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.893" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

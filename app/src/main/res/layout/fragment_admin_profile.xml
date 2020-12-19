@@ -6,24 +6,23 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient">
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:text="Employee's Profile"
+        android:text="Admin's Profile"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewNote"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.833"
-        app:layout_constraintStart_toEndOf="@+id/ImageViewProfile2"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWelcomeBack"
-        app:layout_constraintVertical_bias="0.03" />
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toEndOf="@+id/ImageViewProfileAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWelcomeBackAdmin"
+        app:layout_constraintVertical_bias="0.043" />
 
     <TextView
-        android:id="@+id/tvUsernameProfile"
+        android:id="@+id/tvUsernameAdminProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="116dp"
         android:textColor="@color/design_default_color_background"
         app:layout_constraintBottom_toTopOf="@+id/textViewNote"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,11 +31,11 @@
         app:layout_constraintTop_toBottomOf="@+id/tvMyInfo"
         app:layout_constraintVertical_bias="0.181" />
 
-
     <TextView
-        android:id="@+id/tvEmailProfile"
+        android:id="@+id/tvEmailAdminProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="76dp"
         android:textColor="@color/design_default_color_background"
         app:layout_constraintBottom_toTopOf="@+id/textViewNote"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,9 +45,10 @@
         app:layout_constraintVertical_bias="0.244" />
 
     <TextView
-        android:id="@+id/tvWorkingIdProfile"
+        android:id="@+id/tvWorkingIdAdminProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
         android:textColor="@color/design_default_color_background"
         app:layout_constraintBottom_toTopOf="@+id/textViewNote"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvEmailProfile" />
 
     <TextView
-        android:id="@+id/tvMyInfo"
+        android:id="@+id/tvMyInfoAdmin"
         android:layout_width="100dp"
         android:layout_height="35dp"
         android:fontFamily="@font/carter_one"
@@ -75,7 +75,7 @@
         app:layout_constraintVertical_bias="0.348" />
 
     <TextView
-        android:id="@+id/textViewWelcomeBack"
+        android:id="@+id/textViewWelcomeBackAdmin"
         android:layout_width="200dp"
         android:layout_height="33dp"
         android:fontFamily="@font/carter_one"
@@ -106,10 +106,10 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.701" />
+        app:layout_constraintVertical_bias="0.719" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnCheckIn"
+        android:id="@+id/btnCheckInAdmin"
         android:layout_width="100dp"
         android:layout_height="90dp"
         android:background="@drawable/button_bg_round"
@@ -125,7 +125,7 @@
         app:layout_constraintVertical_bias="0.949" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnCheckOut"
+        android:id="@+id/btnCheckOutAdmin"
         android:layout_width="100dp"
         android:layout_height="90dp"
         android:background="@drawable/button_bg_round"
@@ -141,7 +141,7 @@
         app:layout_constraintVertical_bias="0.947" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ImageViewProfile2"
+        android:id="@+id/ImageViewProfileAdmin"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:background="@drawable/round_background"
