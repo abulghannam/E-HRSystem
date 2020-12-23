@@ -9,6 +9,8 @@ import android.widget.Button;
 
 import com.example.e_hrsystem.R;
 import com.example.e_hrsystem.offerselements.Hotels;
+import com.example.e_hrsystem.offerselements.OthersOffer;
+import com.example.e_hrsystem.offerselements.RestAndCafe;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -28,6 +30,20 @@ public class OffersFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), Hotels.class));
+            }
+        });
+
+        btn_RestCafe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), RestAndCafe.class));
+            }
+        });
+
+        btn_Others.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), OthersOffer.class));
             }
         });
 

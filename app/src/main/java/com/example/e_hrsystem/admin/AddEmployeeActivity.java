@@ -129,13 +129,13 @@ public class AddEmployeeActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()){
-                            Toast.makeText(AddEmployeeActivity.this, "username already using", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddEmployeeActivity.this, "Username is already exist!", Toast.LENGTH_SHORT).show();
                         }else{
                             queryWorkingID.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     if (snapshot.exists()) {
-                                        Toast.makeText(AddEmployeeActivity.this, "Working Id already using", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(AddEmployeeActivity.this, "Working ID is already exist!", Toast.LENGTH_SHORT).show();
                                     } else {
                                         auth.createUserWithEmailAndPassword(email, password)
                                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -157,6 +157,8 @@ public class AddEmployeeActivity extends AppCompatActivity {
                                                                         rEmail.setText("");
                                                                         switchIsHr.setChecked(false);
                                                                         radioGroup.clearCheck();
+                                                                        auth.signOut();
+                                                                        auth.signInWithEmailAndPassword("abood.gh@live.com","Aboodgh22");
 
                                                                     } else {
                                                                         Toast.makeText(AddEmployeeActivity.this, "Failed to Register,Try again!"

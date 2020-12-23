@@ -31,6 +31,8 @@
         <activity android:name=".employee.RequestVacationActivity" />
         <activity android:name=".employee.RequestLeaveActivity" />
         <activity android:name=".offerselements.Hotels" />
+        <activity android:name=".offerselements.RestAndCafe" />
+        <activity android:name=".offerselements.OthersOffer" />
         <activity
             android:name=".admin.MainAdminActivity"
             android:theme="@style/AppTheme.NoActionBar" />
