@@ -1,9 +1,11 @@
 package com.example.e_hrsystem.employee;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -21,13 +23,21 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RequestVacationActivity extends AppCompatActivity {
 
     Spinner typeSpinner;
-    EditText etStartDate, etEndDate, etMoreinfo;
+    TextView etStartDate, etEndDate;
+    EditText etMoreinfo;
     Button btnSendReqVac;
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
@@ -63,6 +73,20 @@ public class RequestVacationActivity extends AppCompatActivity {
 
         });
 
+        etStartDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDateDialog(true);
+            }
+        });
+
+        etEndDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDateDialog(false);
+            }
+        });
+
         dbRefUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -77,6 +101,15 @@ public class RequestVacationActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private boolean isValidRequest(){
+        // To check if the current request does not overlap another request
+        // Steps:
+        // First, get the list of the request for the current user
+        // Second, iterate on each request and check if its valid or not, note that all the current request should return => Valid
+        // when using this method:  isValidStartDate()
+        return true;
     }
 
     public void sendData() {
@@ -109,8 +142,8 @@ public class RequestVacationActivity extends AppCompatActivity {
                                     dbRefCurrentUserId.setValue(vacData);
                                     Toast.makeText(RequestVacationActivity.this, "The Request has been sent",
                                             Toast.LENGTH_SHORT).show();
-                                    etStartDate.getText().clear();
-                                    etEndDate.getText().clear();
+//                                    etStartDate.getText().clear();
+//                                    etEndDate.getText().clear();
                                     etMoreinfo.getText().clear();
                                     typeSpinner.setSelection(0);
 
@@ -134,8 +167,8 @@ public class RequestVacationActivity extends AppCompatActivity {
                         dbRefCurrentUserId.setValue(vacData);
                         Toast.makeText(RequestVacationActivity.this, "The Request has been sent",
                                 Toast.LENGTH_SHORT).show();
-                        etStartDate.getText().clear();
-                        etEndDate.getText().clear();
+//                        etStartDate.getText().clear();
+//                        etEndDate.getText().clear();
                         etMoreinfo.getText().clear();
                         typeSpinner.setSelection(0);
 
@@ -153,5 +186,40 @@ public class RequestVacationActivity extends AppCompatActivity {
             Toast.makeText(RequestVacationActivity.this, "Please Fill all the data", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private Date startDate = null;
+
+    private void showDateDialog(final boolean isStartDate){
+        final Calendar calendar = Calendar.getInstance();
+
+        if (startDate == null && !isStartDate){
+            Toast.makeText(this, "Please select the start date first", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                Calendar calendar1 = Calendar.getInstance();
+                calendar1.set(year, month, dayOfMonth);
+                Date date = calendar1.getTime();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+
+                if (isStartDate){
+                    // get the start date
+                    startDate = date;
+                    etStartDate.setText(sdf.format(date));
+                }else {
+                    // get the end date
+                    etEndDate.setText(sdf.format(date));
+                }
+            }
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+
+        if (startDate != null){
+            datePickerDialog.getDatePicker().setMinDate(startDate.getTime() + TimeUnit.DAYS.toMillis(1));
+        }
+        datePickerDialog.show();
     }
 }

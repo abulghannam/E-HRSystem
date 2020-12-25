@@ -68,7 +68,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.192" />
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <TextView
         android:id="@+id/etStartDate"
         android:layout_width="239dp"
         android:layout_height="33dp"
@@ -103,7 +103,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.372" />
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <TextView
         android:id="@+id/etEndDate"
         android:layout_width="239dp"
         android:layout_height="33dp"

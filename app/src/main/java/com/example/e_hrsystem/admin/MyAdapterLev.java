@@ -14,6 +14,7 @@ import com.example.e_hrsystem.model.RequestLeaveData;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -34,6 +35,21 @@ public class MyAdapterLev extends FirebaseRecyclerAdapter<RequestLeaveData, MyAd
 
         auth = FirebaseAuth.getInstance();
         dbRef = FirebaseDatabase.getInstance().getReference("Request leaves data");
+        FirebaseUser userVerify = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (userVerify != null) {
+            boolean isSameUser = userVerify.getUid().equals(requestLeaveData.getId());
+            holder.btn_Approve_Lev.setEnabled(!isSameUser);
+            holder.btn_Decline_Lev.setEnabled(!isSameUser);
+        }
+        boolean isPending = requestLeaveData.isApproved().equalsIgnoreCase("In Queue");
+
+
+        holder.btn_Approve_Lev.setVisibility(isPending ? View.VISIBLE : View.GONE);
+        holder.btn_Decline_Lev.setVisibility(isPending ? View.VISIBLE : View.GONE);
+
+
+
 
         holder.tvTime.setText(requestLeaveData.getTime());
         holder.tvInfo.setText(requestLeaveData.getMoreInfo());
@@ -51,13 +67,13 @@ public class MyAdapterLev extends FirebaseRecyclerAdapter<RequestLeaveData, MyAd
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
-                                approveLevRequest(requestLeaveData,"Approved");
+                                approveLevRequest(requestLeaveData, "Approved");
                                 Toast.makeText(view.getContext(), "You have been approved this request",
                                         Toast.LENGTH_SHORT).show();
                             }
                         });
 
-                dialog.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }
@@ -80,13 +96,13 @@ public class MyAdapterLev extends FirebaseRecyclerAdapter<RequestLeaveData, MyAd
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
-                                declineLevRequest(requestLeaveData,"Declined");
+                                declineLevRequest(requestLeaveData, "Declined");
                                 Toast.makeText(view.getContext(), "You have been declined this request",
                                         Toast.LENGTH_SHORT).show();
                             }
                         });
 
-                dialog.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }
@@ -112,20 +128,21 @@ public class MyAdapterLev extends FirebaseRecyclerAdapter<RequestLeaveData, MyAd
     @NonNull
     @Override
     public MyAdapterLev.myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.data_leave,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.data_leave, parent, false);
         return new MyAdapterLev.myviewholder(view);
     }
 
-    class myviewholder extends RecyclerView.ViewHolder{
+    class myviewholder extends RecyclerView.ViewHolder {
 
-        TextView tvTime,tvInfo,tvId,tvName;
-        Button btn_Approve_Lev,btn_Decline_Lev;
+        TextView tvTime, tvInfo, tvId, tvName;
+        Button btn_Approve_Lev, btn_Decline_Lev;
+
         public myviewholder(@NonNull View itemView) {
             super(itemView);
 
             tvTime = itemView.findViewById(R.id.tv_timeLev);
             tvInfo = itemView.findViewById(R.id.tv_moreInfoLev);
-            tvId =   itemView.findViewById(R.id.tv_IDLev);
+            tvId = itemView.findViewById(R.id.tv_IDLev);
             tvName = itemView.findViewById(R.id.tv_nameLev);
             btn_Approve_Lev = itemView.findViewById(R.id.btnApproveLev);
             btn_Decline_Lev = itemView.findViewById(R.id.btnDeclineLev);
