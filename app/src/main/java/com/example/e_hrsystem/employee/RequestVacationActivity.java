@@ -134,7 +134,7 @@ public class RequestVacationActivity extends AppCompatActivity {
                                 requestVacationData = snapshot.getValue(RequestVacationData.class);
 
                                 String vacationStatus = requestVacationData.isApproved();
-                                if (vacationStatus.equals("Approved")||vacationStatus.equals("Declined")){
+                                if (vacationStatus.equals("Approved") || vacationStatus.equals("Declined")) {
 
                                     DatabaseReference dbRefCurrentUserId = databaseReference.child(id);
                                     RequestVacationData vacData = new RequestVacationData(type, StartDateVac, EndDateVac,
@@ -142,12 +142,10 @@ public class RequestVacationActivity extends AppCompatActivity {
                                     dbRefCurrentUserId.setValue(vacData);
                                     Toast.makeText(RequestVacationActivity.this, "The Request has been sent",
                                             Toast.LENGTH_SHORT).show();
-//                                    etStartDate.getText().clear();
-//                                    etEndDate.getText().clear();
                                     etMoreinfo.getText().clear();
                                     typeSpinner.setSelection(0);
 
-                                }else{
+                                } else {
                                     Toast.makeText(RequestVacationActivity.this, "There is already a pending request",
                                             Toast.LENGTH_SHORT).show();
 
@@ -159,21 +157,20 @@ public class RequestVacationActivity extends AppCompatActivity {
 
                             }
                         });
-
-                    }else{
-                        DatabaseReference dbRefCurrentUserId = databaseReference.child(id);
-                        RequestVacationData vacData = new RequestVacationData(type, StartDateVac, EndDateVac,
-                                MoreInfo, id, "In queue", tvUsername.getText().toString());
-                        dbRefCurrentUserId.setValue(vacData);
-                        Toast.makeText(RequestVacationActivity.this, "The Request has been sent",
-                                Toast.LENGTH_SHORT).show();
+                    } else{
+                            DatabaseReference dbRefCurrentUserId = databaseReference.child(id);
+                            RequestVacationData vacData = new RequestVacationData(type, StartDateVac, EndDateVac,
+                                    MoreInfo, id, "In queue", tvUsername.getText().toString());
+                            dbRefCurrentUserId.setValue(vacData);
+                            Toast.makeText(RequestVacationActivity.this, "The Request has been sent",
+                                    Toast.LENGTH_SHORT).show();
 //                        etStartDate.getText().clear();
 //                        etEndDate.getText().clear();
-                        etMoreinfo.getText().clear();
-                        typeSpinner.setSelection(0);
+                            etMoreinfo.getText().clear();
+                            typeSpinner.setSelection(0);
 
+                        }
                     }
-                }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {

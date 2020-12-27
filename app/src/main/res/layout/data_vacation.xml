@@ -3,12 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="20dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="3dp"
     app:cardUseCompatPadding="true"
     app:cardBackgroundColor="@color/design_default_color_background">
 
     <LinearLayout
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -145,13 +148,36 @@
 
         </LinearLayout>
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textSize="20sp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_statusVac"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Status"/>
+
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnApprove"
+                android:id="@+id/btnApproveVac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
@@ -159,7 +185,7 @@
                 android:background="@color/color_green"/>
 
             <Button
-                android:id="@+id/btnDecline"
+                android:id="@+id/btnDeclineVac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="65dp"

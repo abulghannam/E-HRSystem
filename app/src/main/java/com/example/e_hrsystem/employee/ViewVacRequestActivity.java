@@ -59,7 +59,7 @@ public class ViewVacRequestActivity extends AppCompatActivity {
         tvTypeVac = findViewById(R.id.tv_typeVac);
         tvStartDate = findViewById(R.id.tv_startVac);
         tvEndDate = findViewById(R.id.tv_endVac);
-        tvVacStatus = findViewById(R.id.tv_statusVac);
+        tvVacStatus = findViewById(R.id.tv_statusVacView);
 
     }
 

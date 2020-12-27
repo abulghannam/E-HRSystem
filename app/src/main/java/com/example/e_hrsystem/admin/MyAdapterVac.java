@@ -15,6 +15,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -38,6 +39,20 @@ public class MyAdapterVac extends FirebaseRecyclerAdapter<RequestVacationData, M
         auth = FirebaseAuth.getInstance();
         dbRef = FirebaseDatabase.getInstance().getReference("Request vacations data");
 
+        FirebaseUser userVerify = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (userVerify != null) {
+            boolean isSameUser = userVerify.getUid().equals(requestVacationData.getId());
+            holder.btn_Approve.setEnabled(!isSameUser);
+            holder.btn_Decline.setEnabled(!isSameUser);
+        }
+        boolean isPending = requestVacationData.isApproved().equalsIgnoreCase("In Queue");
+
+
+        holder.btn_Approve.setVisibility(isPending ? View.VISIBLE : View.GONE);
+        holder.btn_Decline.setVisibility(isPending ? View.VISIBLE : View.GONE);
+
+
 
         holder.tvType.setText(requestVacationData.getType());
         holder.tvStart.setText(requestVacationData.getStartDateVac());
@@ -45,6 +60,7 @@ public class MyAdapterVac extends FirebaseRecyclerAdapter<RequestVacationData, M
         holder.tvInfo.setText(requestVacationData.getMoreInfo());
         holder.tvId.setText(requestVacationData.getId());
         holder.tvName.setText(requestVacationData.getUsername());
+        holder.tvStatus.setText(requestVacationData.isApproved());
         holder.btn_Approve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
@@ -58,7 +74,7 @@ public class MyAdapterVac extends FirebaseRecyclerAdapter<RequestVacationData, M
                                     public void onClick(DialogInterface arg0, int arg1) {
                                         approveVacRequest(requestVacationData,"Approved");
 
-                                        Toast.makeText(view.getContext(), "You have been approved this request",
+                                        Toast.makeText(view.getContext(), "You have approved this request",
                                                 Toast.LENGTH_SHORT).show();
                                     }
                                 });
@@ -88,7 +104,7 @@ public class MyAdapterVac extends FirebaseRecyclerAdapter<RequestVacationData, M
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
                                 declineVacRequest(requestVacationData,"Declined");
-                                Toast.makeText(view.getContext(), "You have been declined this request",
+                                Toast.makeText(view.getContext(), "You have declined this request",
                                         Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -126,7 +142,7 @@ public class MyAdapterVac extends FirebaseRecyclerAdapter<RequestVacationData, M
 
     class myviewholder extends RecyclerView.ViewHolder {
 
-        TextView tvType, tvStart, tvEnd, tvInfo, tvId, tvName;
+        TextView tvType, tvStart, tvEnd, tvInfo, tvId, tvName,tvStatus;
         Button btn_Approve, btn_Decline;
 
         public myviewholder(@NonNull View itemView) {
@@ -138,8 +154,9 @@ public class MyAdapterVac extends FirebaseRecyclerAdapter<RequestVacationData, M
             tvInfo = itemView.findViewById(R.id.tv_moreInfo);
             tvId =   itemView.findViewById(R.id.tv_ID);
             tvName = itemView.findViewById(R.id.tv_name);
-            btn_Approve = itemView.findViewById(R.id.btnApprove);
-            btn_Decline = itemView.findViewById(R.id.btnDecline);
+            tvStatus = itemView.findViewById(R.id.tv_statusVac);
+            btn_Approve = itemView.findViewById(R.id.btnApproveVac);
+            btn_Decline = itemView.findViewById(R.id.btnDeclineVac);
 
         }
     }

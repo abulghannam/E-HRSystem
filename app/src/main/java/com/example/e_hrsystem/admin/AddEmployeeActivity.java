@@ -128,9 +128,9 @@ public class AddEmployeeActivity extends AppCompatActivity {
                 queryUserName.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()){
+                        if (snapshot.exists()) {
                             Toast.makeText(AddEmployeeActivity.this, "Username is already exist!", Toast.LENGTH_SHORT).show();
-                        }else{
+                        } else {
                             queryWorkingID.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -158,7 +158,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
                                                                         switchIsHr.setChecked(false);
                                                                         radioGroup.clearCheck();
                                                                         auth.signOut();
-                                                                        auth.signInWithEmailAndPassword("abood.gh@live.com","Aboodgh22");
+                                                                        auth.signInWithEmailAndPassword("abood.gh@live.com", "aboodgh22");
 
                                                                     } else {
                                                                         Toast.makeText(AddEmployeeActivity.this, "Failed to Register,Try again!"

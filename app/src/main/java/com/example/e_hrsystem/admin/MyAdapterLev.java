@@ -55,6 +55,7 @@ public class MyAdapterLev extends FirebaseRecyclerAdapter<RequestLeaveData, MyAd
         holder.tvInfo.setText(requestLeaveData.getMoreInfo());
         holder.tvId.setText(requestLeaveData.getId());
         holder.tvName.setText(requestLeaveData.getUsername());
+        holder.tvStatus.setText(requestLeaveData.isApproved());
         holder.btn_Approve_Lev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
@@ -68,7 +69,7 @@ public class MyAdapterLev extends FirebaseRecyclerAdapter<RequestLeaveData, MyAd
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
                                 approveLevRequest(requestLeaveData, "Approved");
-                                Toast.makeText(view.getContext(), "You have been approved this request",
+                                Toast.makeText(view.getContext(), "You have approved this request",
                                         Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -97,7 +98,7 @@ public class MyAdapterLev extends FirebaseRecyclerAdapter<RequestLeaveData, MyAd
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
                                 declineLevRequest(requestLeaveData, "Declined");
-                                Toast.makeText(view.getContext(), "You have been declined this request",
+                                Toast.makeText(view.getContext(), "You have declined this request",
                                         Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -134,7 +135,7 @@ public class MyAdapterLev extends FirebaseRecyclerAdapter<RequestLeaveData, MyAd
 
     class myviewholder extends RecyclerView.ViewHolder {
 
-        TextView tvTime, tvInfo, tvId, tvName;
+        TextView tvTime, tvInfo, tvId, tvName , tvStatus;
         Button btn_Approve_Lev, btn_Decline_Lev;
 
         public myviewholder(@NonNull View itemView) {
@@ -144,6 +145,7 @@ public class MyAdapterLev extends FirebaseRecyclerAdapter<RequestLeaveData, MyAd
             tvInfo = itemView.findViewById(R.id.tv_moreInfoLev);
             tvId = itemView.findViewById(R.id.tv_IDLev);
             tvName = itemView.findViewById(R.id.tv_nameLev);
+            tvStatus = itemView.findViewById(R.id.tv_statusLev);
             btn_Approve_Lev = itemView.findViewById(R.id.btnApproveLev);
             btn_Decline_Lev = itemView.findViewById(R.id.btnDeclineLev);
 

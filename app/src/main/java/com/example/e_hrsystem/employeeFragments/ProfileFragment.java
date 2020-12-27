@@ -1,9 +1,12 @@
 package com.example.e_hrsystem.employeeFragments;
 
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.health.TimerStat;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.text.format.Formatter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +40,8 @@ import java.util.Locale;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import static android.content.Context.WIFI_SERVICE;
 
 public class ProfileFragment extends Fragment {
 
@@ -170,6 +175,12 @@ public class ProfileFragment extends Fragment {
                                 DatabaseReference dbRefCurrentUserId = databaseReferenceOut.child(currentDate);
                                 dbRefCurrentUserId.setValue(checkOut);
                                 Toast.makeText(getContext(), "You have checked Out at : " + currentTime, Toast.LENGTH_SHORT).show();
+
+//                                WifiManager wifiMgr = (WifiManager) getActivity().getApplicationContext().getSystemService(WIFI_SERVICE);
+//                                WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
+//                                int ip = wifiInfo.getIpAddress();
+//                                String ipAddress = Formatter.formatIpAddress(ip);
+//                                Toast.makeText(getContext(), ipAddress, Toast.LENGTH_SHORT).show();
 
                             }
                         }

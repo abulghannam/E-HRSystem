@@ -65,7 +65,7 @@ public class DeleteEmployeeActivity extends AppCompatActivity {
                             public void onClick(DialogInterface arg0, int arg1) {
                                 deleteUser();
                                 if(!userEmail.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(userEmail).matches())
-                                Toast.makeText(getApplicationContext(), "You have been deleted this account",
+                                Toast.makeText(getApplicationContext(), "You have deleted this account",
                                         Toast.LENGTH_SHORT).show();
                             }
                         });
